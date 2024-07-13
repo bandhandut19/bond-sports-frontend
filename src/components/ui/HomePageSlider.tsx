@@ -19,7 +19,7 @@ const HomePageSlider = () => {
     <div className="flex items-center justify-center">
       <Carousel
         plugins={[autoplay.current]}
-        className="w-fit"
+        className="lg:w-fit"
         onMouseEnter={() => autoplay.current.stop()}
         onMouseLeave={() => autoplay.current.play()}
       >
@@ -31,7 +31,7 @@ const HomePageSlider = () => {
                 <div className="flex items-center justify-center">
                   <span className="text-4xl font-semibold">
                     <img
-                      className="w-4/5 mx-auto"
+                      className="lg:w-4/5 w-full mx-auto"
                       src={photo}
                       alt="Sports Photos"
                     />
@@ -42,8 +42,8 @@ const HomePageSlider = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="bg-yellow-400" />
-        <CarouselNext className="bg-yellow-400" />
+        <CarouselPrevious className="bg-yellow-400 lg:-mx-3 mx-3" />
+        <CarouselNext className="bg-yellow-400 lg:-mx-3 mx-3" />
       </Carousel>
     </div>
   );
