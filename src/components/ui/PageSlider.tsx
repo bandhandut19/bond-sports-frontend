@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 // import { Card, CardContent } from "@/components/ui/card";
@@ -8,9 +9,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { sliderPhotos } from "@/utils/sliderPhotos";
 
-const HomePageSlider = () => {
+const PageSlider = ({ sliderPhotos }: any) => {
   const autoplay = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false })
   );
@@ -24,7 +24,7 @@ const HomePageSlider = () => {
         onMouseLeave={() => autoplay.current.play()}
       >
         <CarouselContent>
-          {sliderPhotos.map((photo, index) => (
+          {sliderPhotos.map((photo: string, index: number) => (
             <CarouselItem key={index}>
               <div className="p-1">
                 {/* <Card> */}
@@ -49,4 +49,4 @@ const HomePageSlider = () => {
   );
 };
 
-export default HomePageSlider;
+export default PageSlider;

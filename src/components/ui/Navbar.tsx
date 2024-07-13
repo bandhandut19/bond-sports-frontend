@@ -31,16 +31,16 @@ const Navbar = () => {
             </li>
 
             <li>
-              <NavLink to={"/"}>Manage Products</NavLink>
+              <NavLink to={"/manage-products"}>Manage Products</NavLink>
             </li>
             <li>
               <NavLink to={"/about"}>About Us</NavLink>
             </li>
             <li>
-              <NavLink to={"/"}>Cart</NavLink>
+              <NavLink to={"/cart"}>Cart</NavLink>
             </li>
             <li>
-              <NavLink to={"/"}>Checkout</NavLink>
+              <NavLink to={"/checkout"}>Checkout</NavLink>
             </li>
           </ul>
         </div>
