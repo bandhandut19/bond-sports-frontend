@@ -19,7 +19,7 @@ const HomePageSlider = () => {
     <div className="flex items-center justify-center">
       <Carousel
         plugins={[autoplay.current]}
-        className="w-full"
+        className="w-fit"
         onMouseEnter={() => autoplay.current.stop()}
         onMouseLeave={() => autoplay.current.play()}
       >
@@ -42,8 +42,8 @@ const HomePageSlider = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="bg-yellow-400" />
+        <CarouselNext className="bg-yellow-400" />
       </Carousel>
     </div>
   );
