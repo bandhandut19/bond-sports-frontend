@@ -1,9 +1,9 @@
-import { Button } from "./components/ui/button";
+import RootLayout from "./components/layouts/RootLayout";
 
 const App = () => {
   return (
     <div>
-      <Button>Hellooooo Billuuuuuuuu</Button>
+      <RootLayout></RootLayout>;
     </div>
   );
 };
