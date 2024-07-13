@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import PageSlider from "@/components/ui/PageSlider";
+import AddProducts from "@/utils/AddProducts";
 import { manageProductsSlider } from "@/utils/manageProductsSlider";
 import TopMarginSetter from "@/utils/TopMarginSetter";
+import UpdateProducts from "@/utils/UpdateProducts";
 
 //! NEED TO ADD SPECIFIC PHOTOS FOR MANAGE PRODUCTS
 
@@ -16,10 +18,10 @@ const ManageProducts = () => {
       <TopMarginSetter></TopMarginSetter>
       <div className="grid lg:grid-cols-2 grid-cols-1 items-center justify-center gap-10">
         <Button className="h-[10rem] text-xl hover:text-2xl">
-          Add Products
+          <AddProducts></AddProducts>
         </Button>
         <Button className="h-[10rem] text-xl hover:text-2xl">
-          Update Products
+          <UpdateProducts></UpdateProducts>
         </Button>
       </div>
     </>
