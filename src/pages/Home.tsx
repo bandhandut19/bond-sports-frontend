@@ -1,3 +1,4 @@
+import FeaturedProducts from "@/components/ui/FeaturedProducts";
 import PageSlider from "@/components/ui/PageSlider";
 import { sliderPhotos } from "@/utils/sliderPhotos";
 import TopMarginSetter from "@/utils/TopMarginSetter";
@@ -11,6 +12,7 @@ const Home = () => {
         Featured Sports Products
       </span>
       <TopMarginSetter></TopMarginSetter>
+      <FeaturedProducts></FeaturedProducts>
     </div>
   );
 };
