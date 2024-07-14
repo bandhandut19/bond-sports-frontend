@@ -5,7 +5,10 @@ import { TProduct } from "@/types/ProductType";
 const FeaturedProducts = () => {
   const { data, isLoading } = useGetAllProductsQuery({});
   const products = data?.data;
-  console.log(data.data);
+  // console.log(data.data);
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
   return (
     //! It will feature last 4 newly added products
     <div className="grid grid-cols-2 gap-5">
