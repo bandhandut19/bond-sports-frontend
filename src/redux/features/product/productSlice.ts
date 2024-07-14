@@ -8,13 +8,7 @@ const initialState: TProductSlice = {
 const productSlice = createSlice({
   name: "product",
   initialState,
-  reducers: {
-    createProduct: (state, action) => {
-      const { message } = action.payload;
-      state.message = message;
-    },
-  },
+  reducers: {},
 });
 
-export const { createProduct } = productSlice.actions;
 export default productSlice.reducer;

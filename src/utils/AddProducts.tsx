@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -10,15 +11,16 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useCreateProductIntoDBMutation } from "@/redux/features/product/productApi";
-// import { createProduct } from "@/redux/features/product/productSlice";
-// import { useAppDispatch } from "@/redux/hooks";
 import { TProduct } from "@/types/ProductType";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 const AddProducts = () => {
-  const { register, handleSubmit } = useForm<TProduct>();
+  const { register, handleSubmit, reset } = useForm<TProduct>();
+  const [isOpen, setIsOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [createProductIntoDB] = useCreateProductIntoDBMutation();
-  // const dispatch = useAppDispatch();
   const handleAddProducts = async (data: TProduct) => {
     const productInfo = {
       productName: data.productName,
@@ -30,16 +32,29 @@ const AddProducts = () => {
       price: data.price,
       image: data.image,
     };
-    // console.log(productInfo);
-    const res = await createProductIntoDB(productInfo).unwrap();
-    console.log(res);
-    // dispatch(createProduct(productInfo));
+    try {
+      const res = await createProductIntoDB(productInfo).unwrap();
+      // console.log(res);
+      toast(res.message);
+      setIsOpen(false);
+      reset();
+    } catch (error: any) {
+      const res = error;
+      console.log(res?.data?.error?.message);
+      setErrorMessage(res?.data?.error?.message);
+      toast(res?.data?.error?.message);
+      // setIsOpen(false);
+    }
   };
 
   return (
-    <Dialog>
+    //? USED STATES FOR {OPEN} TO CLOSE THE MODAL AFTER ADDING PRODUCTS.
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className="hover:border-none text-xl hover:text-2xl bg-transparent hover:bg-orange-100">
+        <Button
+          onClick={() => setIsOpen(true)}
+          className="hover:border-none text-xl hover:text-2xl bg-transparent hover:bg-orange-100"
+        >
           Add Products
         </Button>
       </DialogTrigger>
@@ -120,6 +135,20 @@ const AddProducts = () => {
                 className="col-span-3"
                 placeholder="Enter Product Image URL here"
               />
+            </div>
+            <div>
+              <span className="text-red-700 font-bold">
+                {errorMessage ? (
+                  <span>
+                    <span className="text-black text-lg rounded-md mb-2 border-b-slate-700 border-l-slate-700 border-4 border-t-0 border-r-0 px-2">
+                      Error Occured:
+                    </span>
+                    {errorMessage}
+                  </span>
+                ) : (
+                  ""
+                )}
+              </span>
             </div>
             <div className="items-center justify-center flex">
               <Button
