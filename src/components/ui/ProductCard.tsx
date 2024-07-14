@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { productName, brand, image, price, stockQuantity, category, _id } =
     product;
+
   return (
     <div className="flex lg:flex-row flex-col rounded-md bg-yellow-300 shadow-xl hover:border-4 hover:border-slate-700 hover:border-b-0 hover:border-l-0">
       <div className="rounded-md flex flex-2">

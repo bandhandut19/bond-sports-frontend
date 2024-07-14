@@ -38,7 +38,7 @@ const root = createBrowserRouter([
         element: <Checkout></Checkout>,
       },
       {
-        path: "/single-product",
+        path: `/product/:id`,
         element: <SingleProductPage></SingleProductPage>,
       },
     ],
