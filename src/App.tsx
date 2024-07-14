@@ -3,7 +3,7 @@ import RootLayout from "./components/layouts/RootLayout";
 const App = () => {
   return (
     <div>
-      <RootLayout></RootLayout>;
+      <RootLayout></RootLayout>
     </div>
   );
 };
