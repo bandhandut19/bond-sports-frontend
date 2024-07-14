@@ -11,7 +11,7 @@ const FeaturedProducts = () => {
   }
   return (
     //! It will feature last 4 newly added products
-    <div className="grid grid-cols-2 gap-5">
+    <div className="grid lg:grid-cols-2 grid-cols-1 gap-5">
       {products
         ?.slice(products.length - 4, products.length)
         .map((product: TProduct) => (
