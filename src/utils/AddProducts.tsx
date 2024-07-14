@@ -9,7 +9,33 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useCreateProductIntoDBMutation } from "@/redux/features/product/productApi";
+// import { createProduct } from "@/redux/features/product/productSlice";
+// import { useAppDispatch } from "@/redux/hooks";
+import { TProduct } from "@/types/ProductType";
+import { useForm } from "react-hook-form";
+
 const AddProducts = () => {
+  const { register, handleSubmit } = useForm<TProduct>();
+  const [createProductIntoDB] = useCreateProductIntoDBMutation();
+  // const dispatch = useAppDispatch();
+  const handleAddProducts = async (data: TProduct) => {
+    const productInfo = {
+      productName: data.productName,
+      category: data.category,
+      stockQuantity: 0,
+      brand: data.brand,
+      rating: 0,
+      productDescription: data.productDescription,
+      price: data.price,
+      image: data.image,
+    };
+    // console.log(productInfo);
+    const res = await createProductIntoDB(productInfo).unwrap();
+    console.log(res);
+    // dispatch(createProduct(productInfo));
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -17,65 +43,93 @@ const AddProducts = () => {
           Add Products
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] bg-yellow-400">
         <DialogHeader>
           <DialogTitle>Add Product</DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-slate-700">
             Add new awesome products to this store
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          <form className="flex flex-col gap-4">
+          <form
+            onSubmit={handleSubmit(handleAddProducts)}
+            className="flex flex-col gap-4"
+          >
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right">
+              <Label htmlFor="product-name" className="text-right">
                 Product Name
               </Label>
-              <Input id="product-name" className="col-span-3" />
+              <Input
+                id="product-name"
+                {...register("productName")}
+                className="col-span-3"
+                placeholder="Enter Product Name here"
+              />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
+              <Label htmlFor="category" className="text-right">
                 Category
               </Label>
-              <Input id="username" className="col-span-3" />
+              <Input
+                id="category"
+                {...register("category")}
+                className="col-span-3"
+                placeholder="Enter Product Category here"
+              />
             </div>
-            {/* <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
-                Stock quantity
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="brand" className="text-right">
+                Brand
               </Label>
               <Input
-                id="stock-quantity"
+                id="brand"
+                {...register("brand")}
                 className="col-span-3"
-                defaultValue={0}
+                placeholder="Enter Product's Brand Name here"
               />
-            </div> */}
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
-                brand
-              </Label>
-              <Input id="brand" className="col-span-3" />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
-                Product description
+              <Label htmlFor="description" className="text-right">
+                Product Description
               </Label>
-              <Input id="product-description" className="col-span-3" />
+              <Input
+                id="description"
+                {...register("productDescription")}
+                className="col-span-3"
+                placeholder="Enter Product's Description here"
+              />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
-                price
+              <Label htmlFor="price" className="text-right">
+                Price
               </Label>
-              <Input id="price" className="col-span-3" />
+              <Input
+                id="price"
+                {...register("price")}
+                className="col-span-3"
+                placeholder="Enter Product Price here"
+              />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
+              <Label htmlFor="imageUrl" className="text-right">
                 Image URL
               </Label>
-              <Input id="image-url" className="col-span-3" />
+              <Input
+                id="imageUrl"
+                {...register("image")}
+                className="col-span-3"
+                placeholder="Enter Product Image URL here"
+              />
+            </div>
+            <div className="items-center justify-center flex">
+              <Button
+                className="border-2 border-slate-600 rounded-md"
+                type="submit"
+              >
+                Add Product
+              </Button>
             </div>
           </form>
-        </div>
-        <div className="items-center justify-center flex">
-          <Button type="submit">Add Product</Button>
         </div>
       </DialogContent>
     </Dialog>
