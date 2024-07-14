@@ -30,7 +30,7 @@ const Footer = () => {
             Portfolio
           </Link>
         </nav>
-        <nav className="lg:ml-10">
+        <nav className="lg:ml-10 ml-5">
           <h6 className="footer-title text-center">Social Links</h6>
           <div className="grid grid-flow-col gap-4  ml-2">
             {/* Linkedin */}
