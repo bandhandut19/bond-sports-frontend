@@ -2,7 +2,14 @@ import { TProductSlice } from "@/types/ProductType";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: TProductSlice = {
-  message: null,
+  productName: null,
+  category: null,
+  stockQuantity: 0,
+  brand: null,
+  rating: 0,
+  productDescription: null,
+  price: null,
+  image: null,
 };
 
 const productSlice = createSlice({

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -15,9 +14,24 @@ import { TProduct } from "@/types/ProductType";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  ProductCategories,
+  TProductCategories,
+} from "@/types/ProductCategories";
 
 const AddProducts = () => {
-  const { register, handleSubmit, reset } = useForm<TProduct>();
+  const [position, setPosition] = useState("Select Category");
+  const { register, handleSubmit, reset, setValue } = useForm<TProduct>();
   const [isOpen, setIsOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [createProductIntoDB] = useCreateProductIntoDBMutation();
@@ -34,7 +48,7 @@ const AddProducts = () => {
     };
     try {
       const res = await createProductIntoDB(productInfo).unwrap();
-      // console.log(res);
+      console.log(res.data.category);
       toast(res.message);
       setIsOpen(false);
       reset();
@@ -58,9 +72,9 @@ const AddProducts = () => {
           Add Products
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-yellow-400">
-        <DialogHeader>
-          <DialogTitle>Add Product</DialogTitle>
+      <DialogContent className="sm:max-w-[700px] bg-yellow-400">
+        <DialogHeader className="flex items-center justify-center">
+          <DialogTitle className="text-2xl font-bold">Add Product</DialogTitle>
           <DialogDescription className="text-slate-700">
             Add new awesome products to this store
           </DialogDescription>
@@ -85,12 +99,38 @@ const AddProducts = () => {
               <Label htmlFor="category" className="text-right">
                 Category
               </Label>
-              <Input
-                id="category"
-                {...register("category")}
-                className="col-span-3"
-                placeholder="Enter Product Category here"
-              />
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild className="w-full col-span-3">
+                  <Button variant="outline">{position}</Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-4/5 mx-auto">
+                  <DropdownMenuLabel>Categories</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuRadioGroup
+                    value={position}
+                    onValueChange={(value: string) => {
+                      setPosition(value as TProductCategories);
+                      setValue("category", value);
+                    }}
+                  >
+                    <DropdownMenuRadioItem
+                      value={ProductCategories.CRICKET_KITS}
+                    >
+                      Cricket Kits
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem
+                      value={ProductCategories.FOOTBALL_KITS}
+                    >
+                      Football Kits
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem
+                      value={ProductCategories.SPORTS_SHOE}
+                    >
+                      Sports Shoe
+                    </DropdownMenuRadioItem>
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="brand" className="text-right">

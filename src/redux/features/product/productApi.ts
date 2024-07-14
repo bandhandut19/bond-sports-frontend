@@ -9,7 +9,14 @@ const productApi = baseApi.injectEndpoints({
         body: productInfo,
       }),
     }),
+    getAllProducts: builder.query({
+      query: () => ({
+        url: "/product",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useCreateProductIntoDBMutation } = productApi;
+export const { useCreateProductIntoDBMutation, useGetAllProductsQuery } =
+  productApi;

@@ -1,4 +1,6 @@
+import { ObjectId } from "bson";
 export type TProduct = {
+  _id?: ObjectId;
   productName: string;
   category: string;
   stockQuantity?: number;
@@ -9,5 +11,12 @@ export type TProduct = {
   image: string;
 };
 export type TProductSlice = {
-  message: null | string;
+  productName: null | string;
+  category: null | string;
+  stockQuantity?: null | number;
+  brand: null | string;
+  rating?: null | number;
+  productDescription: null | string;
+  price: null | number;
+  image: null | string;
 };
