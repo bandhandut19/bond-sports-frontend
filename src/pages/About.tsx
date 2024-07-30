@@ -26,6 +26,34 @@ const About = () => {
     days: "Saturday - Thursday",
     hours: "10am - 8pm",
   };
+
+  //OUR TEAM
+  const team = [
+    {
+      image: "https://i.postimg.cc/J4ZbsMdc/1684299110270.jpg",
+      name: "Bondon Datta",
+      designation: "Founder & CEO",
+    },
+    {
+      image:
+        "https://i.postimg.cc/QM2f20Bj/girl-with-long-hair-being-happy.jpg",
+      name: "Maria Ray",
+      designation: "Head of Sales",
+    },
+    {
+      image:
+        "https://i.postimg.cc/8cVn6tDZ/portrait-young-african-american-man.jpg",
+      name: "Jane Smith",
+      designation: "Chief Marketing Officer",
+    },
+    {
+      image:
+        "https://i.postimg.cc/SsXprZBq/front-view-smiley-girl-looking-away.jpg",
+      name: "Emily Davis",
+      designation: "Product Manager",
+    },
+  ];
+
   return (
     <div className="flex flex-col gap-16">
       <section>
@@ -74,7 +102,7 @@ const About = () => {
           Our Contact Information
         </h1>
         <div className="mt-10 border-2 border-t-0 border-l-4 border-b-4 border-r-0  px-2 py-1 border-yellow-400 border-opacity-70 rounded-md">
-          <div className="grid lg:grid-cols-3 grid-cols-1 mt-10 py-2">
+          <div className="grid lg:grid-cols-3 gap-5 grid-cols-1 mt-10 py-2">
             <div className="flex flex-col gap-3 items-center justify-center">
               <FaPhoneAlt className="text-4xl text-green-600" />
               <h1 className="text-xl font-semibold flex-2">
@@ -116,6 +144,30 @@ const About = () => {
                 <li>{openHours.hours}</li>
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h1 className="text-center text-4xl font-bold">Our Team</h1>
+        <div className="mt-10 border-2 border-t-0 border-l-0 border-b-4 border-r-4  px-2 py-3 border-yellow-400 border-opacity-70 rounded-md">
+          <div className="grid lg:grid-cols-4 grid-cols-1 gap-5 mt-10 py-2">
+            {team.map((member) => (
+              <div className="text-center flex flex-col justify-center items-center rounded-full border-4 border-t-0 border-l-0 border-b-4 border-r-0  px-5 py-2 border-yellow-400">
+                <div className="border-2 border-b-0 border-l-4 border-t-4 border-r-4 border-yellow-400 rounded-full px-4 py-3 flex-2">
+                  <img
+                    className="rounded-full"
+                    src={member.image}
+                    width={"150rem"}
+                    height={"50rem"}
+                  ></img>
+                </div>
+                <div className="mt-3 px-16 flex-1 py-2">
+                  <h1 className="font-bold">{member.name}</h1>
+                  <h1>{member.designation}</h1>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
