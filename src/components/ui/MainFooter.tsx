@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-const Footer = () => {
+const MainFooter = () => {
   return (
-    <footer className="footer flex flex-col bg-slate-200 text-base-content lg:p-5 px-2 py-10 items-center justify-center font-primary-one  min-h-64">
+    <footer className="footer flex flex-col bg-slate-200 text-base-content lg:p-5 px-2 py-10 items-center justify-center font-primary-one mt-28 min-h-64">
       <div className="grid lg:grid-cols-3 grid-cols-1 lg:gap-48 gap-10 lg:p-2 items-center justify-center">
         <nav className="flex flex-col mt-14 items-center justify-center text-center">
           <h1 className="lg:text-2xl text-xl text-center font-bold font-name mb-5">
@@ -71,4 +71,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default MainFooter;

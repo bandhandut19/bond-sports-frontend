@@ -3,7 +3,6 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { FaClock } from "react-icons/fa";
 //
 const About = () => {
-  //* Our Team Section
   //* Our Store Location Information
 
   // MISSION & VISION
@@ -56,10 +55,12 @@ const About = () => {
 
   return (
     <div className="flex flex-col gap-16">
-      <section>
-        <h1 className="text-center text-4xl font-bold">Bond Sports</h1>
-        <div className="mt-10 border-2 border-t-0 border-l-4 border-b-0 border-r-4  px-2 py-1 border-yellow-400 border-opacity-70 rounded-md">
-          <p className="p-5 text-center font-semibold text-xl">
+      <section className="bg-black bg-opacity-40 p-10 text-white rounded-s-badge rounded-e-badge">
+        <h1 className="text-center text-4xl font-bold border-4 rounded-lg py-3 border-b-0 border-l-4 border-t-4 border-r-4 border-yellow-500">
+          Bond Sports
+        </h1>
+        <div className="mt-10 border-2 border-t-0 border-l-4 border-b-4 border-r-4  px-2 py-1 border-yellow-400 border-opacity-70 rounded-md">
+          <p className=" p-5 text-center font-bold text-xl">
             <span className="text-center">
               Welcome to Bond Sports, your premier destination for high-quality
               sporting goods since January 2024.{" "}
@@ -77,18 +78,20 @@ const About = () => {
         </div>
       </section>
 
-      <section>
-        <h1 className="text-center text-4xl font-bold">Our Mission & Vision</h1>
-        <div className="mt-10 border-2 border-t-4 border-l-4 border-b-0 border-r-0  px-2 py-1 border-yellow-400 border-opacity-70 rounded-md">
-          <h1 className="text-center text-2xl font-bold text-green-500">
+      <section className="bg-black bg-opacity-40 p-10 rounded-s-badge rounded-e-badge">
+        <h1 className="text-center text-4xl font-bold border-4 py-3 border-b-0 border-l-4 rounded-lg border-t-4 border-r-4 border-yellow-500">
+          Our Mission & Vision
+        </h1>
+        <div className="mt-10 border-2 border-t-0 border-l-4 border-b-0 border-r-4  px-2 py-1 border-yellow-400 border-opacity-70 rounded-md">
+          <h1 className="text-center text-2xl font-bold text-yellow-400">
             -- Mission --
           </h1>
-          <p className="p-5 text-center font-semibold text-xl">
+          <p className="p-5  text-center font-bold text-xl">
             {missionStatement}
           </p>
         </div>
-        <div className="mt-10 border-2 border-t-0 border-l-0 border-b-4 border-r-4  px-2 py-1 border-yellow-400 border-opacity-70 rounded-md">
-          <h1 className="text-center text-2xl font-bold text-green-500">
+        <div className="mt-10 border-2 border-t-0 border-l-4 border-b-4 border-r-4  px-2 py-1 border-yellow-400 border-opacity-70 rounded-md">
+          <h1 className="text-center text-2xl font-bold text-yellow-400">
             -- Vision --
           </h1>
           <p className="p-5 text-center font-semibold text-xl">
@@ -97,12 +100,12 @@ const About = () => {
         </div>
       </section>
 
-      <section>
-        <h1 className="text-center text-4xl font-bold">
+      <section className="bg-black bg-opacity-40 p-10 rounded-s-badge rounded-e-badge">
+        <h1 className="text-center text-4xl font-bold border-4 py-3 border-b-0 border-l-4 rounded-lg border-t-4 border-r-4 border-yellow-500">
           Our Contact Information
         </h1>
-        <div className="mt-10 border-2 border-t-0 border-l-4 border-b-4 border-r-0  px-2 py-1 border-yellow-400 border-opacity-70 rounded-md">
-          <div className="grid lg:grid-cols-3 gap-5 grid-cols-1 mt-10 py-2">
+        <div className="mt-10 border-2 border-t-0 border-l-4 border-b-4 border-r-4  px-2 py-1 border-yellow-400 border-opacity-70 rounded-md">
+          <div className="grid lg:grid-cols-2 gap-2 grid-cols-1 mt-10 py-2">
             <div className="flex flex-col gap-3 items-center justify-center">
               <FaPhoneAlt className="text-4xl text-green-600" />
               <h1 className="text-xl font-semibold flex-2">
@@ -123,22 +126,10 @@ const About = () => {
                 </li>
               </ul>
             </div>
-            <div className="flex flex-col gap-3 items-center justify-center">
-              <FaLocationDot className="text-4xl text-red-600" />
-              <h1 className="text-xl font-semibold flex-2">
-                Visit Our Location!
-              </h1>
-              <ul className="text-center flex-1">
-                <li>
-                  <span>{locations.primaryOutletPart_1}</span>
-                  <br />
-                  <span>{locations.primaryOutletPart_2}</span>
-                </li>
-              </ul>
-            </div>
+
             <div className="flex flex-col gap-3 items-center justify-center">
               <FaClock className="text-4xl text-orange-500" />
-              <h1 className="text-xl font-semibold flex-2">Open Hours!</h1>
+              <h1 className="text-xl font-semibold flex-1">Open Hours!</h1>
               <ul className="text-center flex-1">
                 <li>{openHours.days}</li>
                 <li>{openHours.hours}</li>
@@ -148,9 +139,11 @@ const About = () => {
         </div>
       </section>
 
-      <section>
-        <h1 className="text-center text-4xl font-bold">Our Team</h1>
-        <div className="mt-10 border-2 border-t-0 border-l-0 border-b-4 border-r-4  px-2 py-3 border-yellow-400 border-opacity-70 rounded-md">
+      <section className="bg-black bg-opacity-40 p-10 rounded-s-badge rounded-e-badge">
+        <h1 className="text-center text-4xl font-bold border-4 py-3 border-b-0 border-l-4 rounded-lg border-t-4 border-r-4 border-yellow-500">
+          Our Team
+        </h1>
+        <div className="mt-10 border-2 border-t-0 border-l-4 border-b-4 border-r-4  px-2 py-3 border-yellow-400 border-opacity-70 rounded-md">
           <div className="grid lg:grid-cols-4 grid-cols-1 gap-5 mt-10 py-2">
             {team.map((member) => (
               <div className="text-center flex flex-col justify-center items-center rounded-full border-4 border-t-0 border-l-0 border-b-4 border-r-0  px-5 py-2 border-yellow-400">
@@ -168,6 +161,29 @@ const About = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-black bg-opacity-40 p-10 rounded-s-badge rounded-e-badge">
+        <h1 className="text-center text-4xl font-bold border-4 py-3 border-b-0 border-l-4 rounded-lg border-t-4 border-r-4 border-yellow-500">
+          Our Store Location
+        </h1>
+        <div className="mt-10 border-2 border-t-0 border-l-4 border-b-4 border-r-4  px-2 py-1 border-yellow-400 border-opacity-70 rounded-md">
+          <div className="grid   grid-cols-1 mt-10 py-2">
+            <div className="flex flex-col gap-3 items-center justify-center">
+              <FaLocationDot className="text-4xl text-red-600" />
+              <h1 className="text-xl font-semibold flex-2">
+                Visit Our Location!
+              </h1>
+              <ul className="text-center flex-1">
+                <li>
+                  <span>{locations.primaryOutletPart_1}</span>
+                  <br />
+                  <span>{locations.primaryOutletPart_2}</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
