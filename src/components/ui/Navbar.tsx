@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-
+import { FaShoppingCart } from "react-icons/fa";
+import { IoBagCheckOutline } from "react-icons/io5";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 const Navbar = () => {
   return (
     <div className="navbar bg-yellow-400 px-7">
@@ -36,12 +44,6 @@ const Navbar = () => {
             <li>
               <NavLink to={"/about"}>About Us</NavLink>
             </li>
-            <li>
-              <NavLink to={"/cart"}>Cart</NavLink>
-            </li>
-            <li>
-              <NavLink to={"/checkout"}>Checkout</NavLink>
-            </li>
           </ul>
         </div>
         <Link to={"/"} className="text-xl">
@@ -64,22 +66,58 @@ const Navbar = () => {
           </li>
 
           <li className="text-lg font-semibold">
-            <NavLink to={"/manage-products"}>Manage Products</NavLink>
+            <NavLink
+              className="hover:bg-orange-600 hover:text-white"
+              to={"/manage-products"}
+            >
+              Manage Products
+            </NavLink>
           </li>
           <li className="text-lg font-semibold">
-            <NavLink to={"/about"}>About Us</NavLink>
+            <NavLink
+              className="hover:bg-orange-600 hover:text-white"
+              to={"/about"}
+            >
+              About Us
+            </NavLink>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <ul className="flex gap-2">
-          <li className="text-lg font-semibold">
-            <NavLink to={"/cart"}>Cart</NavLink>
-          </li>
-          <li className="text-lg font-semibold">
-            <NavLink to={"/checkout"}>Checkout</NavLink>
-          </li>
-        </ul>
+        <div className="flex gap-x-10 py-5 px-8">
+          <div className="text-3xl font-semibold text-orange-600 border-4 border-orange-600 p-2 border-t-0 border-r-0 border-opacity-40 rounded-lg">
+            <NavLink to={"/cart"} className="flex-1 ">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div>
+                      <FaShoppingCart />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-orange-600 border-none text-white">
+                    <p>Cart</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </NavLink>
+          </div>
+          <div className="text-3xl font-bold text-orange-600 border-4 border-orange-600 p-2 border-b-0 border-l-0 border-opacity-40 rounded-lg">
+            <NavLink to={"/checkout"} className="flex-1 ">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div>
+                      <IoBagCheckOutline />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-orange-600 border-none text-white">
+                    <p>Checkout</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </NavLink>
+          </div>
+        </div>
       </div>
     </div>
   );
