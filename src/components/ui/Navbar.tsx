@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoBagCheckOutline } from "react-icons/io5";
-import { Button } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
