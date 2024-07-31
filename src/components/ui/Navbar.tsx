@@ -44,30 +44,39 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link to={"/"} className="btn btn-ghost text-xl">
-          Bond Sports
+        <Link to={"/"} className="text-xl">
+          <img
+            className="w-[8rem] h-[7rem] bg-orange-600 rounded-e-full rounded-ss-full"
+            src="https://i.postimg.cc/bwDBLpjB/1-removebg-preview.png"
+            alt=""
+          />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <NavLink to={"/all-products"}>All Products</NavLink>
+        <ul className="menu menu-horizontal px-1 gap-5 ">
+          <li className="text-lg font-semibold ">
+            <NavLink
+              className="hover:bg-orange-600 hover:text-white"
+              to={"/all-products"}
+            >
+              All Products
+            </NavLink>
           </li>
 
-          <li>
+          <li className="text-lg font-semibold">
             <NavLink to={"/manage-products"}>Manage Products</NavLink>
           </li>
-          <li>
+          <li className="text-lg font-semibold">
             <NavLink to={"/about"}>About Us</NavLink>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
         <ul className="flex gap-2">
-          <li>
+          <li className="text-lg font-semibold">
             <NavLink to={"/cart"}>Cart</NavLink>
           </li>
-          <li>
+          <li className="text-lg font-semibold">
             <NavLink to={"/checkout"}>Checkout</NavLink>
           </li>
         </ul>

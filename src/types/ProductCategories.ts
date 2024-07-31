@@ -6,3 +6,6 @@ export const ProductCategories = {
 
 export type TProductCategories =
   (typeof ProductCategories)[keyof typeof ProductCategories];
+
+// array of categories
+export const AllCategories = Object.values(ProductCategories);
