@@ -19,24 +19,48 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useState } from "react";
 const AllProducts = () => {
-  const { data, isLoading } = useGetAllProductsQuery({});
-  const productData = data?.data;
+  const [searchName, setSearchName] = useState("");
+  const { data, isLoading } = useGetAllProductsQuery(searchName || "");
+  const productData = data?.data || [];
   const handleApplyFilter = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+  };
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const searchedProduct = form.serachProduct.value;
+    setSearchName(searchedProduct);
+    console.log(searchName);
+    form.reset();
   };
   return (
     <div>
       <div className="mb-10 flex justify-between">
         {/*search */}
-        <div className="flex w-full max-w-sm items-center space-x-2">
-          <Input type="email" placeholder="Search Products here" />
-          <Button
-            type="submit"
-            className="hover:bg-yellow-400 hover:border-none"
+        <div>
+          <form
+            onSubmit={handleSearch}
+            className="flex w-full max-w-sm items-center space-x-2"
           >
-            <FaSearch className="text-orange-600 text-lg" />
-          </Button>
+            <Input
+              type="text"
+              name="serachProduct"
+              // value={searchName}
+              // onChange={(e) => setSearchName(e.target.value)}
+              placeholder="Search Product by name"
+            />
+            <Button
+              type="submit"
+              className="hover:border-2 border-orange-600 hover:bg-yellow-300"
+            >
+              <FaSearch className="text-orange-600 text-lg" />
+            </Button>
+            <Button className="hover:border-2 border-orange-600 hover:bg-yellow-300">
+              Show all
+            </Button>
+          </form>
         </div>
         {/* Filter */}
         <div className="flex w-full max-w-sm  space-x-2  items-end justify-end">
@@ -105,13 +129,16 @@ const AllProducts = () => {
 
       {isLoading ? <span>Loading</span> : ""}
 
-      <div className="grid lg:grid-cols-2  grid-cols-1 gap-10">
-        {productData?.map((product: TProduct) => (
-          <div className="col-span-1">
-            <ProductCard product={product}></ProductCard>
-          </div>
-          // console.log(product.productName)
-        ))}
+      <div className="grid lg:grid-cols-2 grid-cols-1 gap-10">
+        {Array.isArray(productData) && productData.length !== 0 ? (
+          productData.map((product: TProduct) => (
+            <div className="col-span-1" key={product.productName}>
+              <ProductCard product={product} />
+            </div>
+          ))
+        ) : (
+          <div>No Data</div>
+        )}
       </div>
 
       {/* <Button>
