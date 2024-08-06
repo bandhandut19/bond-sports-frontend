@@ -1,6 +1,6 @@
 import { TProductSlice } from "@/types/ProductType";
 import { createSlice } from "@reduxjs/toolkit";
-
+// import { PayloadAction } from "@reduxjs/toolkit";
 const initialState: TProductSlice = {
   productName: null,
   category: null,

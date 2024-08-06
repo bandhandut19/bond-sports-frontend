@@ -20,19 +20,27 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
+
 const AllProducts = () => {
+  const [searchParams] = useSearchParams();
+  const category = searchParams.get("category") || "";
   const [searchName, setSearchName] = useState("");
-  const { data, isLoading } = useGetAllProductsQuery(searchName || "");
+
+  const { data, isLoading } = useGetAllProductsQuery({
+    queryName: category ? "category" : "product",
+    userQuery: category || searchName,
+  });
   const productData = data?.data || [];
+
   const handleApplyFilter = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
-    const searchedProduct = form.serachProduct.value;
+    const searchedProduct = form.searchProduct.value;
     setSearchName(searchedProduct);
-    console.log(searchName);
     form.reset();
   };
   return (
@@ -46,7 +54,7 @@ const AllProducts = () => {
           >
             <Input
               type="text"
-              name="serachProduct"
+              name="searchProduct"
               // value={searchName}
               // onChange={(e) => setSearchName(e.target.value)}
               placeholder="Search Product by name"
@@ -137,7 +145,7 @@ const AllProducts = () => {
             </div>
           ))
         ) : (
-          <div>No Data</div>
+          <div>No Data Found</div>
         )}
       </div>
 

@@ -6,5 +6,6 @@ export const baseApi = createApi({
     baseUrl: "http://localhost:5000/api/bond-sports",
     credentials: "include",
   }),
+  tagTypes: ["Product"],
   endpoints: () => ({}),
 });
