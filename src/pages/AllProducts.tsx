@@ -17,7 +17,7 @@ import {
 
 import {
   Sheet,
-  SheetClose,
+  // SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
@@ -47,13 +47,13 @@ const AllProducts = () => {
   // const handleApplyFilter = (e: React.FormEvent<HTMLFormElement>) => {
   //   e.preventDefault();
   // };
-  const handleClearFilters = (e) => {
+  const handleClearFilters = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setCategoryPosition("Select category");
     setSortPosition("Sort By");
     setBrandPosition("Select Brand");
     setOrderPosition("Select Order");
-    const form = e.target;
+    const form = e.target as HTMLFormElement;
     form.minimumPrice.value = 0;
     form.maximumPrice.value = 100;
   };

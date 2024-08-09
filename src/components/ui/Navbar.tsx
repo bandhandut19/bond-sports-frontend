@@ -8,7 +8,10 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useAppSelector } from "@/redux/hooks";
+import { RootState } from "@/redux/store";
 const Navbar = () => {
+  const items = useAppSelector((state: RootState) => state.cart.items);
   return (
     <div className="navbar bg-yellow-400 px-7">
       <div className="navbar-start ">
@@ -100,6 +103,9 @@ const Navbar = () => {
               </TooltipProvider>
             </NavLink>
           </div>
+          <span className=" cursor-pointer absolute top-6 right-28 mr-4 bg-orange-600 rounded-full p-1 text-yellow-400 font-bold text-lg">
+            {items === 0 ? <span className="p-2"> {items} </span> : +{ items }}
+          </span>
           <div className="text-3xl font-bold text-orange-600 border-4 border-orange-600 p-2 border-b-0 border-l-0 border-opacity-40 rounded-lg">
             <NavLink to={"/checkout"} className="flex-1 ">
               <TooltipProvider>
