@@ -39,7 +39,7 @@ const AddProducts = () => {
     const productInfo = {
       productName: data.productName,
       category: data.category,
-      stockQuantity: 0,
+      stockQuantity: data.stockQuantity,
       brand: data.brand,
       rating: 0,
       productDescription: data.productDescription,
@@ -144,13 +144,25 @@ const AddProducts = () => {
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="stockQuantity" className="text-right">
+                Stock Quantity
+              </Label>
+              <Input
+                id="stockQuantity"
+                type="number"
+                {...register("stockQuantity")}
+                className="col-span-3"
+                placeholder="Enter Product's Stock Quantity here"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="description" className="text-right">
                 Product Description
               </Label>
-              <Input
+              <textarea
                 id="description"
                 {...register("productDescription")}
-                className="col-span-3"
+                className="col-span-3 px-2 py-1 rounded-md"
                 placeholder="Enter Product's Description here"
               />
             </div>
@@ -160,6 +172,7 @@ const AddProducts = () => {
               </Label>
               <Input
                 id="price"
+                type="number"
                 {...register("price")}
                 className="col-span-3"
                 placeholder="Enter Product Price here"
