@@ -8,20 +8,26 @@ const productApi = baseApi.injectEndpoints({
         method: "POST",
         body: productInfo,
       }),
+      invalidatesTags: [{ type: "Product", id: "LIST" }],
     }),
     getAllProducts: builder.query({
       query: ({ queryName, userQuery }) => ({
         url: `/product?${queryName}=${userQuery}`,
         method: "GET",
       }),
-      providesTags: ["Product"],
-    }),
 
+      providesTags: (result) =>
+        result
+          ? [{ type: "Product", id: "LIST" }]
+          : [{ type: "Product", id: "LIST" }],
+    }),
     getSingleProduct: builder.query({
       query: (id) => ({
         url: `/product/${id}`,
         method: "GET",
       }),
+
+      providesTags: (id) => [{ type: "Product", id }],
     }),
   }),
 });
@@ -31,3 +37,5 @@ export const {
   useGetAllProductsQuery,
   useGetSingleProductQuery,
 } = productApi;
+
+export default productApi;
