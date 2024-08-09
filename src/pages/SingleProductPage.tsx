@@ -11,24 +11,27 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { DollarSign, Star, Database, Store } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { RootState } from "@/redux/store";
+import { addItems } from "@/redux/features/cart/cartSlice";
+
+//
 const SingleProductPage = () => {
   const { id } = useParams();
+  const cartItems = useAppSelector((state: RootState) => state.cart.items);
+  const dispatch = useAppDispatch();
 
   const { data, isLoading } = useGetSingleProductQuery(id);
-
   if (isLoading) {
     return <span className="text-xl">Loading...</span>;
   }
-
   if (!data) {
     return <span className="text-xl">Product not found</span>;
   }
-
   const productInfo: TProduct = data?.data;
-
   const {
+    _id,
     image,
     productName,
     productDescription,
@@ -40,6 +43,15 @@ const SingleProductPage = () => {
   } = productInfo;
 
   // console.log(productInfo);
+  const handleAddToCart = (id: string) => {
+    const alreadyExists = cartItems.filter((item) => item._id === id);
+    console.log(alreadyExists);
+    if (alreadyExists.length === 0) {
+      dispatch(addItems(productInfo));
+    } else {
+      console.log("naaaaa");
+    }
+  };
 
   return (
     <div>
@@ -131,7 +143,12 @@ const SingleProductPage = () => {
             <div></div>
           </CardContent>
           <CardFooter>
-            <Button className="w-full">Add to Cart</Button>
+            <Button
+              onClick={() => handleAddToCart(_id as string)}
+              className="w-full"
+            >
+              Add to Cart
+            </Button>
           </CardFooter>
         </Card>
         <TopMarginSetter></TopMarginSetter>
