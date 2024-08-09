@@ -58,6 +58,10 @@ const SingleProductPage = () => {
         </div>
       </div>
       <div className="text-left flex flex-col items-center justify-center w-4/5 mx-auto bg-yellow-400 lg:px-36 px-2">
+        <div>
+          <TopMarginSetter></TopMarginSetter>
+          <img className="w-1/2 mx-auto rounded-md" src={image} alt="" />
+        </div>
         <TopMarginSetter></TopMarginSetter>
 
         <Card className="min-w-full">
