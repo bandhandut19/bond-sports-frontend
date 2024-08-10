@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoBagCheckOutline } from "react-icons/io5";
@@ -10,8 +10,17 @@ import {
 } from "@/components/ui/tooltip";
 import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
+import { toast } from "sonner";
 const Navbar = () => {
   const items = useAppSelector((state: RootState) => state.cart.items);
+  const navigate = useNavigate();
+  const handleCheckout = () => {
+    if (items.length === 0) {
+      toast.warning("No products to checkout");
+    } else {
+      navigate("/checkout");
+    }
+  };
   return (
     <div className="navbar bg-yellow-400 px-7">
       <div className="navbar-start ">
@@ -86,8 +95,8 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <div className="flex gap-x-10 py-5 px-8">
-          <div className="text-3xl font-semibold text-orange-600 border-4 border-orange-600 p-2 border-t-0 border-r-0 border-opacity-40 rounded-lg">
+        <div className="flex gap-x-10 py-2 px-3">
+          <div className="text-2xl font-semibold text-orange-600 border-4 border-orange-600 p-2 border-t-0 border-r-0 border-opacity-40 rounded-lg">
             <NavLink to={"/cart"} className="flex-1 ">
               <TooltipProvider>
                 <Tooltip>
@@ -103,28 +112,28 @@ const Navbar = () => {
               </TooltipProvider>
             </NavLink>
           </div>
-          <span className=" cursor-pointer  absolute top-6 right-28 mr-4 bg-orange-600 rounded-full p-1 text-white font-bold text-lg">
+          <span className=" cursor-pointer  absolute top-6 right-20 mr-4 bg-orange-600 rounded-full p-1 text-white font-bold">
             {items.length === 0 ? (
               <span className="p-2"> {items.length} </span>
             ) : (
               <span>+{items.length}</span>
             )}
           </span>
-          <div className="text-3xl font-bold text-orange-600 border-4 border-orange-600 p-2 border-b-0 border-l-0 border-opacity-40 rounded-lg">
-            <NavLink to={"/checkout"} className="flex-1 ">
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <div>
+          <div className="text-2xl font-bold text-orange-600 border-4 border-orange-600 p-2 border-b-0 border-l-0 border-opacity-40 rounded-lg">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div>
+                    <button onClick={handleCheckout}>
                       <IoBagCheckOutline />
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent className="bg-orange-600 border-none text-white">
-                    <p>Checkout</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </NavLink>
+                    </button>
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent className="bg-orange-600 border-none text-white">
+                  <p>Checkout</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
         </div>
       </div>

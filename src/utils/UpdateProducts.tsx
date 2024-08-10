@@ -14,7 +14,7 @@ const UpdateProducts = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="hover:border-none text-xl hover:text-2xl bg-transparent hover:bg-orange-100">
+        <Button className="hover:border-none text-xl  hover:bg-gradient-to-br bg-gradient-to-tl to-yellow-400 w-4/5 from-orange-400 h-[10rem]">
           Update Products
         </Button>
       </DialogTrigger>

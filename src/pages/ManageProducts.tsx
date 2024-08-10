@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import PageSlider from "@/components/ui/PageSlider";
 import AddProducts from "@/utils/AddProducts";
 import { manageProductsSlider } from "@/utils/manageProductsSlider";
@@ -17,12 +16,12 @@ const ManageProducts = () => {
       </div>
       <TopMarginSetter></TopMarginSetter>
       <div className="grid lg:grid-cols-2 grid-cols-1 items-center justify-center gap-10">
-        <Button className="h-[10rem] text-xl hover:text-2xl">
+        <div className="text-center">
           <AddProducts></AddProducts>
-        </Button>
-        <Button className="h-[10rem] text-xl hover:text-2xl">
+        </div>
+        <div className="text-center">
           <UpdateProducts></UpdateProducts>
-        </Button>
+        </div>
       </div>
     </>
   );

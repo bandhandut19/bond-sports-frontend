@@ -13,6 +13,7 @@ import { RootState } from "@/redux/store";
 import { Link } from "react-router-dom";
 import { IoMdAdd } from "react-icons/io";
 import { FaMinus } from "react-icons/fa6";
+import { IoBagCheckOutline } from "react-icons/io5";
 import {
   decreaseQuantity,
   increaseQuantity,
@@ -27,6 +28,7 @@ const Cart = () => {
   const handleDecreaseQuantity = (id: string) => {
     dispatch(decreaseQuantity(id));
   };
+
   return (
     <div>
       {cartItems.length === 0 ? (
@@ -109,9 +111,65 @@ const Cart = () => {
             ))}
           </TableBody>
           <TableFooter>
-            <TableRow>
-              <TableCell colSpan={4}>Total</TableCell>
-              <TableCell className="text-right">$2,500.00</TableCell>
+            <TableRow className="bg-yellow-400 text-center hover:bg-yellow-400">
+              <TableCell colSpan={5}>
+                <span className="  cursor-pointer text-xl border-4 px-4 py-1 rounded-full bg-orange-600 border-l-0 border-t-0 border-slate-500 text-white border-e-6 ">
+                  Payment Summary
+                </span>
+                <div className="mt-10">
+                  {(() => {
+                    const totalPrice = cartItems.reduce(
+                      (acc, item) =>
+                        acc +
+                        (item.price as number) * (item.quantity as number),
+                      0
+                    );
+                    const vat = totalPrice * 0.15;
+
+                    return (
+                      <Table>
+                        <TableHeader>
+                          <TableRow className="hover:bg-transparent">
+                            <div className="grid grid-cols-3 gap-5 justify-center items-center">
+                              <TableHead className="text-center px-4 py-1 rounded-sm bg-orange-600  text-white">
+                                Total Price
+                              </TableHead>
+                              <TableHead className="text-center px-4 py-1 rounded-sm bg-orange-600  text-white">
+                                Total VAT 15%
+                              </TableHead>
+                              <TableHead className="text-center px-4 py-1 rounded-sm bg-orange-600  text-white">
+                                Total Amount To Be Paid
+                              </TableHead>
+                            </div>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          <TableRow className="hover:bg-transparent">
+                            <div className="grid grid-cols-3 gap-5 justify-center items-center">
+                              <TableCell>
+                                {totalPrice.toFixed(2)} BDT Only
+                              </TableCell>
+                              <TableCell> {vat.toFixed(2)} BDT Only</TableCell>
+                              <TableCell className="text-center font-extrabold">
+                                {(totalPrice + vat).toFixed(2)} BDT Only
+                              </TableCell>
+                            </div>
+                          </TableRow>
+                          <Link to="/checkout">
+                            <button className="w-1/2 mx-auto mt-5 py-2 rounded-md text-lg bg-orange-600">
+                              <div className="flex items-center justify-center gap-3 text-white">
+                                {" "}
+                                <span>Checkout</span>
+                                <IoBagCheckOutline className="text-2xl" />
+                              </div>
+                            </button>
+                          </Link>
+                        </TableBody>
+                      </Table>
+                    );
+                  })()}
+                </div>
+              </TableCell>
             </TableRow>
           </TableFooter>
         </Table>

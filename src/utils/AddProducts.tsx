@@ -67,7 +67,7 @@ const AddProducts = () => {
       <DialogTrigger asChild>
         <Button
           onClick={() => setIsOpen(true)}
-          className="hover:border-none text-xl hover:text-2xl bg-transparent hover:bg-orange-100"
+          className="hover:border-none text-xl  px-5 hover:bg-gradient-to-br  bg-gradient-to-tl to-yellow-400 w-4/5 from-orange-400 h-[10rem]"
         >
           Add Products
         </Button>
