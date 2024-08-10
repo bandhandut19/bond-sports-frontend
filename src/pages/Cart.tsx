@@ -156,11 +156,11 @@ const Cart = () => {
                             </div>
                           </TableRow>
                           <Link to="/checkout">
-                            <button className="w-1/2 mx-auto mt-5 py-2 rounded-md text-lg bg-orange-600">
-                              <div className="flex items-center justify-center gap-3 text-white">
+                            <button className="w-1/2 mx-auto mt-5 py-2 rounded-md text-lg  hover:text-black bg-orange-600">
+                              <div className="flex items-center justify-center gap-3 text-white hover:text-black ">
                                 {" "}
-                                <span>Checkout</span>
-                                <IoBagCheckOutline className="text-2xl" />
+                                <span className="">Checkout</span>
+                                <IoBagCheckOutline className="text-2xl hover:text-white" />
                               </div>
                             </button>
                           </Link>
