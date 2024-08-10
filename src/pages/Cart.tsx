@@ -16,6 +16,7 @@ import { FaMinus } from "react-icons/fa6";
 import {
   decreaseQuantity,
   increaseQuantity,
+  removeFromCart,
 } from "@/redux/features/cart/cartSlice";
 const Cart = () => {
   const cartItems = useAppSelector((state: RootState) => state.cart.items);
@@ -97,7 +98,10 @@ const Cart = () => {
                   {item.stockQuantity} left only
                 </TableCell>
                 <TableCell className="text-center font-semibold">
-                  <button className="px-2 border-2 border-orange-600 hover:border-yellow-400 bg-yellow-400 py-2 rounded-full font-bold text-2xl text-red-600">
+                  <button
+                    onClick={() => dispatch(removeFromCart(item._id as string))}
+                    className="px-2 border-2 border-orange-600 hover:border-yellow-400 bg-yellow-400 py-2 rounded-full font-bold text-2xl text-red-600"
+                  >
                     <RiDeleteBin6Fill />
                   </button>
                 </TableCell>

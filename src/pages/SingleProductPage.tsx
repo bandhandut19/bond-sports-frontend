@@ -18,14 +18,13 @@ import { Button } from "@/components/ui/button";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
 import { addItems, increaseQuantity } from "@/redux/features/cart/cartSlice";
-import { useState } from "react";
 
 //
 const SingleProductPage = () => {
   const { id } = useParams();
   const cartItems = useAppSelector((state: RootState) => state.cart.items);
   const dispatch = useAppDispatch();
-  const [available, setAvailable] = useState(true);
+
   const { data, isLoading } = useGetSingleProductQuery(id);
   if (isLoading) {
     return <span className="text-xl">Loading...</span>;
@@ -45,25 +44,19 @@ const SingleProductPage = () => {
     brand,
     stockQuantity,
   } = productInfo;
-  let quantity = 0;
 
   // console.log(productInfo);
   const handleAddToCart = (id: string) => {
     const currentProduct = cartItems.filter((item) => item._id === id);
     if (currentProduct.length === 0) {
-      dispatch(addItems({ ...productInfo, quantity: quantity + 1 }));
+      dispatch(addItems({ ...productInfo, quantity: 1 }));
       toast(`${productName} added to the cart successfully`);
     } else {
       if (currentProduct[0].quantity && productInfo.stockQuantity) {
-        if (currentProduct[0].quantity <= productInfo.stockQuantity - 1) {
+        if (currentProduct[0].quantity < productInfo.stockQuantity) {
           console.log(currentProduct[0].quantity);
           dispatch(increaseQuantity(_id as string));
           toast(`One more ${productName} added to the cart successfully`);
-        } else {
-          if (currentProduct[0].quantity! <= productInfo.stockQuantity) {
-            setAvailable(false);
-          }
-          toast("Product is out of stock");
         }
       }
     }
@@ -159,20 +152,21 @@ const SingleProductPage = () => {
             <div></div>
           </CardContent>
           <CardFooter>
-            {available ? (
-              <Button
-                onClick={() => handleAddToCart(_id as string)}
-                className="w-full"
-              >
-                Add to Cart
-              </Button>
-            ) : (
+            {cartItems.find((item) => item._id === id)?.quantity ===
+            stockQuantity ? (
               <Button
                 disabled
                 onClick={() => handleAddToCart(_id as string)}
                 className="w-full"
               >
                 Out of Stock
+              </Button>
+            ) : (
+              <Button
+                onClick={() => handleAddToCart(_id as string)}
+                className="w-full"
+              >
+                Add to Cart
               </Button>
             )}
           </CardFooter>
