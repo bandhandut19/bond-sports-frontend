@@ -14,6 +14,7 @@ export type TProductSlice = {
   productName: null | string;
   category: null | string;
   stockQuantity?: null | number;
+  quantity?: number;
   brand: null | string;
   rating?: null | number;
   productDescription: null | string;

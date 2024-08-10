@@ -103,7 +103,7 @@ const Navbar = () => {
               </TooltipProvider>
             </NavLink>
           </div>
-          <span className=" cursor-pointer absolute top-6 right-28 mr-4 bg-orange-600 rounded-full p-1 text-yellow-400 font-bold text-lg">
+          <span className=" cursor-pointer  absolute top-6 right-28 mr-4 bg-orange-600 rounded-full p-1 text-white font-bold text-lg">
             {items.length === 0 ? (
               <span className="p-2"> {items.length} </span>
             ) : (

@@ -8,14 +8,24 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { RiDeleteBin6Fill } from "react-icons/ri";
-import { useAppSelector } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
 import { Link } from "react-router-dom";
 import { IoMdAdd } from "react-icons/io";
 import { FaMinus } from "react-icons/fa6";
+import {
+  decreaseQuantity,
+  increaseQuantity,
+} from "@/redux/features/cart/cartSlice";
 const Cart = () => {
   const cartItems = useAppSelector((state: RootState) => state.cart.items);
-
+  const dispatch = useAppDispatch();
+  const handleIncreaseQuantity = (id: string) => {
+    dispatch(increaseQuantity(id));
+  };
+  const handleDecreaseQuantity = (id: string) => {
+    dispatch(decreaseQuantity(id));
+  };
   return (
     <div>
       {cartItems.length === 0 ? (
@@ -44,7 +54,7 @@ const Cart = () => {
                 Quantity{" "}
               </TableHead>
               <TableHead className="text-center text-black">
-                Stock Quantiy
+                Stock Quantity
               </TableHead>
               <TableHead className="text-center text-black">
                 Delete From Cart
@@ -68,12 +78,18 @@ const Cart = () => {
                 </TableCell>
                 <TableCell className="text-center font-semibold">
                   <div className="flex items-center justify-center gap-5">
-                    <button className="px-2 bg-yellow-400 py-2 border-2 border-green-600 hover:border-yellow-400 rounded-full font-extrabold text-lg">
-                      <IoMdAdd />
-                    </button>
-                    1
-                    <button className="px-2 border-2 border-orange-600 hover:border-yellow-400 bg-yellow-400 py-2 rounded-full font-bold text-lg">
+                    <button
+                      onClick={() => handleDecreaseQuantity(item._id as string)}
+                      className="px-2 border-2 border-orange-600 hover:border-yellow-400 bg-yellow-400 py-2 rounded-full font-bold text-lg"
+                    >
                       <FaMinus />
+                    </button>
+                    {item.quantity}
+                    <button
+                      onClick={() => handleIncreaseQuantity(item._id as string)}
+                      className="px-2 bg-yellow-400 py-2 border-2 border-green-600 hover:border-yellow-400 rounded-full font-extrabold text-lg"
+                    >
+                      <IoMdAdd />
                     </button>
                   </div>
                 </TableCell>
