@@ -1,13 +1,14 @@
 import { ProductCardProps } from "@/types/ProductProptypes";
 import { Button } from "./button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { productName, brand, image, price, stockQuantity, category, _id } =
     product;
-
+  const navigate = useNavigate();
+  //border for cards --> hover:border-4 hover:border-slate-700 hover:border-b-4 hover:border-l-4 hover:border-t-0 hover:border-r-0
   return (
-    <div className="flex lg:flex-row flex-col rounded-md bg-gradient-to-bl to-orange-400 from-yellow-300 shadow-xl hover:border-4 hover:border-slate-700 hover:border-b-4 hover:border-l-4 hover:border-t-0 hover:border-r-0  hover:bg-gradient-to-tl hover:to-orange-400 hover:from-yellow-400 hover:transition-colors">
+    <div className="flex lg:flex-row flex-col  border-black rounded-md bg-gradient-to-bl to-orange-400 from-yellow-300 shadow-xl   hover:bg-gradient-to-tl hover:to-orange-400 hover:from-yellow-400 hover:transition-colors  hover:shadow-orange-500">
       <div className="rounded-md flex flex-2">
         <img className="w-full" src={image} alt="sports products" />
       </div>
@@ -40,11 +41,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             )}
           </div>
           <div>
-            <Link to={`/product/${_id}`}>
+            {/* <Link to={`/product/${_id}`}>
               <Button className="border-2 border-slate-600">
                 View Details
               </Button>
-            </Link>
+            </Link> */}
+
+            <Button
+              onClick={() => navigate(`/product/${_id}`)}
+              className="border-2 border-slate-600"
+            >
+              View Details
+            </Button>
           </div>
         </div>
       </div>

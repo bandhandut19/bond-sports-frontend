@@ -153,7 +153,7 @@ const SingleProductPage = () => {
           </CardContent>
           <CardFooter>
             {cartItems.find((item) => item._id === id)?.quantity ===
-            stockQuantity ? (
+              stockQuantity || stockQuantity === 0 ? (
               <Button
                 disabled
                 onClick={() => handleAddToCart(_id as string)}

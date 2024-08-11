@@ -8,6 +8,7 @@ import Cart from "../pages/Cart";
 import Checkout from "../pages/Checkout";
 import SingleProductPage from "../pages/SingleProductPage";
 import AboutLayout from "@/components/layouts/AboutLayout";
+import SuccessPage from "@/pages/SuccessPage";
 
 const root = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const root = createBrowserRouter([
       {
         path: `/product/:id`,
         element: <SingleProductPage></SingleProductPage>,
+      },
+      {
+        path: "/success",
+        element: <SuccessPage></SuccessPage>,
       },
     ],
   },

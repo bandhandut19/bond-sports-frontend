@@ -27,7 +27,18 @@ const productApi = baseApi.injectEndpoints({
         method: "GET",
       }),
 
-      providesTags: (id) => [{ type: "Product", id }],
+      providesTags: (result) =>
+        result
+          ? [{ type: "Product", id: "LIST" }]
+          : [{ type: "Product", id: "LIST" }],
+    }),
+    modifyQuantity: builder.mutation({
+      query: (cartItemInfo) => ({
+        url: "/product/modifyquantity",
+        method: "PATCH",
+        body: cartItemInfo,
+      }),
+      invalidatesTags: [{ type: "Product", id: "LIST" }],
     }),
   }),
 });
@@ -36,6 +47,7 @@ export const {
   useCreateProductIntoDBMutation,
   useGetAllProductsQuery,
   useGetSingleProductQuery,
+  useModifyQuantityMutation,
 } = productApi;
 
 export default productApi;
