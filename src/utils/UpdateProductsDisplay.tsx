@@ -1,4 +1,8 @@
-import { useGetAllProductsQuery } from "@/redux/features/product/productApi";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  useDeleteProductMutation,
+  useGetAllProductsQuery,
+} from "@/redux/features/product/productApi";
 import { TProduct } from "@/types/ProductType";
 import {
   Table,
@@ -12,11 +16,21 @@ import {
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { GrUpdate } from "react-icons/gr";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
 const UpdateProductsDisplay = () => {
   const { data, isLoading } = useGetAllProductsQuery({
     queryName: "product",
     userQuery: "",
   });
+  const [deleteProduct] = useDeleteProductMutation();
+  const handleDeleteProduct = async (id: string) => {
+    try {
+      const result = await deleteProduct(id);
+      toast(result.data.message);
+    } catch (error: any) {
+      toast(error?.mesaage);
+    }
+  };
   const products: TProduct[] = data?.data;
   console.log(data);
 
@@ -73,7 +87,7 @@ const UpdateProductsDisplay = () => {
                 </TableCell>
                 <TableCell className="text-center font-semibold">
                   <button
-                    // onClick={() => }
+                    onClick={() => handleDeleteProduct(item._id as string)}
                     className="px-2 border-2 border-orange-600 hover:text-xl hover:border-yellow-400 bg-yellow-400 py-2 rounded-full font-bold text-2xl text-red-600"
                   >
                     <RiDeleteBin6Fill />
