@@ -10,6 +10,7 @@ import SingleProductPage from "../pages/SingleProductPage";
 import AboutLayout from "@/components/layouts/AboutLayout";
 import SuccessPage from "@/pages/SuccessPage";
 import UpdateProductsDisplay from "@/utils/UpdateProductsDisplay";
+import UpdateSingleProduct from "../pages/UpdateSingleProduct";
 
 const root = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const root = createBrowserRouter([
       {
         path: "/updateproduct",
         element: <UpdateProductsDisplay></UpdateProductsDisplay>,
+      },
+      {
+        path: "/updateproduct/:id",
+        element: <UpdateSingleProduct></UpdateSingleProduct>,
       },
     ],
   },

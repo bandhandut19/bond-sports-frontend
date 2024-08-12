@@ -48,13 +48,11 @@ const AddProducts = () => {
     };
     try {
       const res = await createProductIntoDB(productInfo).unwrap();
-      console.log(res.data.category);
       toast(res.message);
       setIsOpen(false);
       reset();
     } catch (error: any) {
       const res = error;
-      console.log(res?.data?.error?.message);
       setErrorMessage(res?.data?.error?.message);
       toast(res?.data?.error?.message);
       // setIsOpen(false);

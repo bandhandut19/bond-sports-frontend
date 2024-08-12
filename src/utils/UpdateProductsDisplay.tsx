@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/table";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { GrUpdate } from "react-icons/gr";
+import { Link } from "react-router-dom";
 const UpdateProductsDisplay = () => {
   const { data, isLoading } = useGetAllProductsQuery({
     queryName: "product",
@@ -28,7 +29,7 @@ const UpdateProductsDisplay = () => {
           <TableHeader>
             <TableRow className="bg-yellow-400 hover:bg-yellow-400">
               <TableHead className="text-black lg:text-left text-center">
-                Product Name
+                Product
               </TableHead>
               <TableHead className="text-right text-black">Price</TableHead>
 
@@ -64,12 +65,11 @@ const UpdateProductsDisplay = () => {
                   {item.stockQuantity} left only
                 </TableCell>
                 <TableCell className="text-center font-semibold">
-                  <button
-                    // onClick={() => }
-                    className="px-2 border-2 border-green-700 hover:border-yellow-400 bg-green-500 py-2 hover:text-xl rounded-full font-bold text-2xl text-white"
-                  >
-                    <GrUpdate />
-                  </button>
+                  <Link to={`/updateproduct/${item._id}`}>
+                    <button className="px-2 border-2 border-green-700 hover:border-yellow-400 bg-green-500 py-2 hover:text-xl rounded-full font-bold text-2xl text-white">
+                      <GrUpdate />
+                    </button>
+                  </Link>
                 </TableCell>
                 <TableCell className="text-center font-semibold">
                   <button
