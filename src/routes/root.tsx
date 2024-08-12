@@ -9,6 +9,7 @@ import Checkout from "../pages/Checkout";
 import SingleProductPage from "../pages/SingleProductPage";
 import AboutLayout from "@/components/layouts/AboutLayout";
 import SuccessPage from "@/pages/SuccessPage";
+import UpdateProductsDisplay from "@/utils/UpdateProductsDisplay";
 
 const root = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const root = createBrowserRouter([
       {
         path: "/success",
         element: <SuccessPage></SuccessPage>,
+      },
+      {
+        path: "/updateproduct",
+        element: <UpdateProductsDisplay></UpdateProductsDisplay>,
       },
     ],
   },

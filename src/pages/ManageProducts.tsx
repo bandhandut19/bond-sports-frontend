@@ -1,8 +1,8 @@
 import PageSlider from "@/components/ui/PageSlider";
+import UpdateProductsButton from "@/components/ui/UpdateProductsButton";
 import AddProducts from "@/utils/AddProducts";
 import { manageProductsSlider } from "@/utils/manageProductsSlider";
 import TopMarginSetter from "@/utils/TopMarginSetter";
-import UpdateProducts from "@/utils/UpdateProducts";
 
 //! NEED TO ADD SPECIFIC PHOTOS FOR MANAGE PRODUCTS
 
@@ -20,7 +20,7 @@ const ManageProducts = () => {
           <AddProducts></AddProducts>
         </div>
         <div className="text-center">
-          <UpdateProducts></UpdateProducts>
+          <UpdateProductsButton></UpdateProductsButton>
         </div>
       </div>
     </>
