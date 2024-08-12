@@ -48,9 +48,7 @@ const Cart = () => {
         <Table>
           <TableHeader>
             <TableRow className="bg-yellow-400 hover:bg-yellow-400">
-              <TableHead className="w-[130px] text-black">
-                Product Name
-              </TableHead>
+              <TableHead className=" text-black">Product Name</TableHead>
               <TableHead className="text-right text-black">Price</TableHead>
               <TableHead className="text-center text-black">
                 {" "}
@@ -70,9 +68,15 @@ const Cart = () => {
                 className="bg-gradient-to-bl from-orange-400 to-yellow-500 hover:from-yellow-500 hover:to-orange-600"
                 key={item.productName}
               >
-                <TableCell className="font-medium px-1">
-                  <div className="grid grid-cols-2 gap-2">
-                    <img src={item.image as string} alt="" />
+                <TableCell className="flex items-center gap-2 font-medium px-1 border-l-2 border border-t-0">
+                  <div className="text-left">
+                    <img
+                      src={item.image as string}
+                      className="lg:max-w-[5rem] w-[50px] h-[50px] lg:h-auto"
+                      alt={item.productName as string}
+                    />
+                  </div>
+                  <div className="text-center">
                     <h1>{item.productName}</h1>
                   </div>
                 </TableCell>
