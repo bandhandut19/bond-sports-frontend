@@ -2,10 +2,8 @@ import { useGetAllProductsQuery } from "@/redux/features/product/productApi";
 import { TProduct } from "../types/ProductType";
 import ProductCard from "@/components/ui/ProductCard";
 import { Button } from "@/components/ui/button";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaFilter } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
-import { FaFilter } from "react-icons/fa";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,10 +12,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
 import {
   Sheet,
-  // SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
@@ -28,35 +24,52 @@ import {
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { AllCategories } from "@/types/ProductCategories";
+import { useForm } from "react-hook-form";
 
 const AllProducts = () => {
   const [categoryPosition, setCategoryPosition] = useState("Select category");
   const [sortPosition, setSortPosition] = useState("Sort By");
   const [brandPosition, setBrandPosition] = useState("Select Brand");
   const [orderPosition, setOrderPosition] = useState("Select Order");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
   const [searchParams] = useSearchParams();
   const category = searchParams.get("category") || "";
   const [searchName, setSearchName] = useState("");
+
   const navigate = useNavigate();
+  const { setValue } = useForm();
+
+  // Prepare the filter query
+  const filterQuery = {
+    filterCategory:
+      categoryPosition !== "Select category" ? categoryPosition : "",
+    filterBrand: brandPosition !== "Select Brand" ? brandPosition : "",
+    filterSort: sortPosition !== "Sort By" ? sortPosition : "",
+    filterOrder: orderPosition !== "Select Order" ? orderPosition : "",
+    minPrice: minPrice || "",
+    maxPrice: maxPrice || "",
+  };
+
+  console.log("Filter Query:", filterQuery);
+
   const { data, isLoading } = useGetAllProductsQuery({
-    category: category,
+    category,
     search: searchName,
+    ...filterQuery,
   });
   const productData = data?.data || [];
 
-  // const handleApplyFilter = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  // };
-  const handleClearFilters = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleClearFilters = () => {
+    // reset();
     setCategoryPosition("Select category");
     setSortPosition("Sort By");
     setBrandPosition("Select Brand");
     setOrderPosition("Select Order");
-    const form = e.target as HTMLFormElement;
-    form.minimumPrice.value = 0;
-    form.maximumPrice.value = 100;
+    setMinPrice("");
+    setMaxPrice("");
   };
+
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
@@ -65,10 +78,11 @@ const AllProducts = () => {
     navigate(`/all-products?search=${searchedProduct}`);
     form.reset();
   };
+
   return (
     <div>
       <div className="mb-10 flex justify-between">
-        {/*search */}
+        {/* Search */}
         <div>
           <form
             onSubmit={handleSearch}
@@ -77,8 +91,6 @@ const AllProducts = () => {
             <Input
               type="text"
               name="searchProduct"
-              // value={searchName}
-              // onChange={(e) => setSearchName(e.target.value)}
               placeholder="Search Product by name"
             />
             <Button
@@ -93,7 +105,7 @@ const AllProducts = () => {
           </form>
         </div>
         {/* Filter */}
-        <div className="flex w-full max-w-sm  space-x-2  items-end justify-end">
+        <div className="flex w-full max-w-sm space-x-2 items-end justify-end">
           <Sheet>
             <SheetTrigger asChild>
               <div>
@@ -115,7 +127,7 @@ const AllProducts = () => {
                   Apply filters to get the products as per your need
                 </SheetDescription>
               </SheetHeader>
-              <form onSubmit={handleClearFilters}>
+              <form>
                 <div className="grid gap-4 py-4">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -125,11 +137,11 @@ const AllProducts = () => {
                       <DropdownMenuSeparator />
                       <DropdownMenuRadioGroup
                         value={categoryPosition}
-                        onValueChange={setCategoryPosition}
+                        onValueChange={(value: string) => {
+                          setCategoryPosition(value);
+                          setValue("category", value);
+                        }}
                       >
-                        <DropdownMenuRadioItem value="All Categories">
-                          All Categories
-                        </DropdownMenuRadioItem>
                         {AllCategories.map((category) => (
                           <DropdownMenuRadioItem
                             key={category}
@@ -141,126 +153,122 @@ const AllProducts = () => {
                       </DropdownMenuRadioGroup>
                     </DropdownMenuContent>
                   </DropdownMenu>
-                  <div className="grid  gap-4">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="outline">{sortPosition}</Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-56">
-                        <DropdownMenuSeparator />
-                        <DropdownMenuRadioGroup
-                          value={categoryPosition}
-                          onValueChange={setSortPosition}
-                        >
-                          <DropdownMenuRadioItem value="Price">
-                            Price
-                          </DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="Rating">
-                            Rating
-                          </DropdownMenuRadioItem>
-                        </DropdownMenuRadioGroup>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                  <div className="grid  gap-4">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="outline">{orderPosition}</Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-56">
-                        <DropdownMenuSeparator />
-                        <DropdownMenuRadioGroup
-                          value={categoryPosition}
-                          onValueChange={setOrderPosition}
-                        >
-                          <DropdownMenuRadioItem value="Ascending">
-                            Ascending
-                          </DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="Descending">
-                            Descending
-                          </DropdownMenuRadioItem>
-                        </DropdownMenuRadioGroup>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                  <div className="grid  gap-4">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="outline">{brandPosition}</Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-56">
-                        <DropdownMenuSeparator />
-                        <DropdownMenuRadioGroup
-                          value={categoryPosition}
-                          onValueChange={setBrandPosition}
-                        >
-                          <DropdownMenuRadioItem value="All Brands">
-                            All Brands
-                          </DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="SG">
-                            SG
-                          </DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="Adidas">
-                            Adidas
-                          </DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="Nike">
-                            Nike
-                          </DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="Kookaburra">
-                            Kookaburra
-                          </DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="Reebok">
-                            Reebok
-                          </DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="Puma">
-                            Puma
-                          </DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="Under Armour">
-                            Under Armour
-                          </DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="Asics">
-                            Asics
-                          </DropdownMenuRadioItem>
-                        </DropdownMenuRadioGroup>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline">{sortPosition}</Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56">
+                      <DropdownMenuSeparator />
+                      <DropdownMenuRadioGroup
+                        value={sortPosition}
+                        onValueChange={(value: string) => {
+                          setSortPosition(value);
+                          setValue("sort", value);
+                        }}
+                      >
+                        <DropdownMenuRadioItem value="Price">
+                          Price
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="Rating">
+                          Rating
+                        </DropdownMenuRadioItem>
+                      </DropdownMenuRadioGroup>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline">{orderPosition}</Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56">
+                      <DropdownMenuSeparator />
+                      <DropdownMenuRadioGroup
+                        value={orderPosition}
+                        onValueChange={(value: string) => {
+                          setOrderPosition(value);
+                          setValue("order", value);
+                        }}
+                      >
+                        <DropdownMenuRadioItem value="Ascending">
+                          Ascending
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="Descending">
+                          Descending
+                        </DropdownMenuRadioItem>
+                      </DropdownMenuRadioGroup>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline">{brandPosition}</Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56">
+                      <DropdownMenuSeparator />
+                      <DropdownMenuRadioGroup
+                        value={brandPosition}
+                        onValueChange={(value: string) => {
+                          setBrandPosition(value);
+                          setValue("brand", value);
+                        }}
+                      >
+                        {/* List of brands */}
+                        <DropdownMenuRadioItem value="SG">
+                          SG
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="Adidas">
+                          Adidas
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="Nike">
+                          Nike
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="Kookaburra">
+                          Kookaburra
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="Reebok">
+                          Reebok
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="Puma">
+                          Puma
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="Under Armour">
+                          Under Armour
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="Asics">
+                          Asics
+                        </DropdownMenuRadioItem>
+                      </DropdownMenuRadioGroup>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                   <div className="grid gap-4">
                     <label htmlFor="minPrice" className="font-semibold">
-                      Set Minimum Price ( BDT )
+                      Set Minimum Price (BDT)
                     </label>
                     <input
                       className="text-center py-2 rounded-md"
                       type="number"
-                      name="minimumPrice"
-                      defaultValue={0}
+                      value={minPrice}
+                      onChange={(e) => setMinPrice(e.target.value)}
                     />
                   </div>
                   <div className="grid gap-4">
-                    <label htmlFor="minPrice" className="font-semibold">
-                      Set Maximum Price ( BDT )
+                    <label htmlFor="maxPrice" className="font-semibold">
+                      Set Maximum Price (BDT)
                     </label>
                     <input
                       className="text-center py-2 rounded-md"
                       type="number"
-                      name="maximumPrice"
-                      defaultValue={100}
+                      value={maxPrice}
+                      onChange={(e) => setMaxPrice(e.target.value)}
                     />
                   </div>
                 </div>
                 <SheetFooter>
-                  {/* <SheetClose asChild> */}
                   <Button
-                    className="border-2 border-slate-400 "
-                    type="submit"
-                    // onClick={handleClearFilters}
+                    className="border-2 border-slate-400"
+                    type="button"
+                    onClick={handleClearFilters}
                   >
                     Clear Filters
                   </Button>
-                  {/* </SheetClose> */}
-                  {/* <Button className="border-2 border-slate-400" type="submit">
-                  Apply Filters
-                  </Button> */}
                 </SheetFooter>
               </form>
             </SheetContent>
@@ -268,7 +276,7 @@ const AllProducts = () => {
         </div>
       </div>
 
-      {isLoading ? <span>Loading</span> : ""}
+      {isLoading ? <span>Loading...</span> : ""}
 
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-10">
         {Array.isArray(productData) && productData.length !== 0 ? (
@@ -281,10 +289,6 @@ const AllProducts = () => {
           <div>No Data Found</div>
         )}
       </div>
-
-      {/* <Button>
-        <Link to={"/single-product"}>Single product</Link>
-      </Button> */}
     </div>
   );
 };

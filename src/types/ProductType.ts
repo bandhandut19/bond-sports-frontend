@@ -9,6 +9,15 @@ export type TProduct = {
   price: number;
   image: string;
 };
+
+export type Tfilter = {
+  category?: string;
+  sort?: string;
+  order?: string;
+  brand?: string;
+  minPrice?: number;
+  maxPrice?: number;
+};
 export type TProductSlice = {
   _id?: string;
   productName: null | string;
