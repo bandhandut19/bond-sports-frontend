@@ -62,7 +62,7 @@ const AllProducts = () => {
     const form = e.target as HTMLFormElement;
     const searchedProduct = form.searchProduct.value;
     setSearchName(searchedProduct);
-    navigate(`/all-products?category=${searchedProduct}`);
+    navigate(`/all-products?search=${searchedProduct}`);
     form.reset();
   };
   return (
