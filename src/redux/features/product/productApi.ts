@@ -11,9 +11,10 @@ const productApi = baseApi.injectEndpoints({
       invalidatesTags: [{ type: "Product", id: "LIST" }],
     }),
     getAllProducts: builder.query({
-      query: ({ queryName, userQuery }) => ({
-        url: `/product?${queryName}=${userQuery}`,
+      query: (params) => ({
+        url: `/product`,
         method: "GET",
+        params,
       }),
 
       providesTags: (result) =>

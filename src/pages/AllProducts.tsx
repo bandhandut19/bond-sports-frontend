@@ -26,7 +26,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { AllCategories } from "@/types/ProductCategories";
 
 const AllProducts = () => {
@@ -37,10 +37,10 @@ const AllProducts = () => {
   const [searchParams] = useSearchParams();
   const category = searchParams.get("category") || "";
   const [searchName, setSearchName] = useState("");
-
+  const navigate = useNavigate();
   const { data, isLoading } = useGetAllProductsQuery({
-    queryName: category ? "category" : "product",
-    userQuery: category || searchName,
+    category: category,
+    search: searchName,
   });
   const productData = data?.data || [];
 
@@ -62,6 +62,7 @@ const AllProducts = () => {
     const form = e.target as HTMLFormElement;
     const searchedProduct = form.searchProduct.value;
     setSearchName(searchedProduct);
+    navigate(`/all-products?category=${searchedProduct}`);
     form.reset();
   };
   return (

@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import {
   AllCategories,
   TProductCategories,
@@ -8,18 +7,9 @@ import { useNavigate } from "react-router-dom";
 
 const Categories = () => {
   const navigate = useNavigate();
-  const [categoryName, setCategory] = useState("");
-
-  useEffect(() => {
-    if (categoryName) {
-      console.log(categoryName);
-      navigate(`/all-products?category=${categoryName}`);
-      setCategory("");
-    }
-  }, [categoryName, navigate]);
 
   const handleCategory = (category: TProductCategories) => {
-    setCategory(category);
+    navigate(`/all-products?category=${category}`);
   };
 
   return (
