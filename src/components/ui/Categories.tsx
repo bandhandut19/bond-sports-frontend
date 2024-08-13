@@ -23,7 +23,7 @@ const Categories = () => {
   };
 
   return (
-    <div className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-5">
+    <div className="grid lg:grid-cols-3  grid-cols-1 gap-5">
       {AllCategories.map((category) => (
         <Card
           key={category}

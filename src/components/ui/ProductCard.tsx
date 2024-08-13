@@ -8,9 +8,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const navigate = useNavigate();
   //border for cards --> hover:border-4 hover:border-slate-700 hover:border-b-4 hover:border-l-4 hover:border-t-0 hover:border-r-0
   return (
-    <div className="flex lg:flex-row flex-col  border-black rounded-md bg-gradient-to-bl to-orange-400 from-yellow-300 shadow-xl   hover:bg-gradient-to-tl hover:to-orange-400 hover:from-yellow-400 hover:transition-colors  hover:shadow-orange-500">
-      <div className="rounded-md flex flex-2">
-        <img className="w-full" src={image} alt="sports products" />
+    <div className="flex   border-black rounded-md bg-gradient-to-bl to-orange-400 from-yellow-300 shadow-xl   hover:bg-gradient-to-tl hover:to-orange-400 hover:from-yellow-400 hover:transition-colors  hover:shadow-orange-500">
+      <div className="rounded-md flex  flex-2">
+        <img
+          className="lg:w-full w-[300px] h-[300px]"
+          src={image}
+          alt="sports products"
+        />
       </div>
 
       <div className="card-body">
