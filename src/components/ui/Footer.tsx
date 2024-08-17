@@ -9,25 +9,25 @@ const Footer = () => {
             Bond Sports
           </h1>
           <div className="flex md:flex-col flex-col gap-1 items-left justify-center cursor-pointer">
-            <span>0179753731111</span>
-            <span>bondSports@gmail.com</span>
+            <span>01797537300</span>
+            <span>bondon21081@gmail.com</span>
           </div>
         </nav>
         <nav className="flex flex-col mt-10 text-center lg:ml-10">
           <h6 className="footer-title text-center font-extrabold">
             Quick Navigation
           </h6>
-          <Link to={"/aboutme"} className="link link-hover ">
-            About me
+          <Link to={"/all-products"} className="link link-hover ">
+            All Products
           </Link>
-          <Link to={"/services"} className="link link-hover">
-            Services
+          <Link to={"/manage-products"} className="link link-hover">
+            Manage Products
+          </Link>
+          <Link to={"/about"} className="link link-hover">
+            About Us
           </Link>
           <Link to={"/"} className="link link-hover">
-            Contact
-          </Link>
-          <Link to={"/portfolio"} className="link link-hover">
-            Portfolio
+            Contact Us
           </Link>
         </nav>
         <nav className="lg:ml-10 ml-5">
@@ -35,7 +35,7 @@ const Footer = () => {
           <div className="grid grid-flow-col gap-4  ml-2">
             {/* Linkedin */}
             <Link
-              to={"https://www.linkedin.com/in/alyssa-runge-7bb84991"}
+              to={"https://bd.linkedin.com/in/bondon-datta-56b375161"}
               target="_blank"
             >
               <div className="w-[25px]">
@@ -44,9 +44,7 @@ const Footer = () => {
             </Link>
             {/* Instagram */}
             <Link
-              to={
-                "https://www.instagram.com/proofreading.by.alyssa?igsh=OW9jazgxOHV3bG9s"
-              }
+              to={"https://www.instagram.com/bandhan_datta/"}
               target="_blank"
             >
               <div className="w-[25px]">
