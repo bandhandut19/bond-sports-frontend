@@ -2,13 +2,17 @@ import { Link } from "react-router-dom";
 
 const MainFooter = () => {
   return (
-    <footer className="footer flex flex-col bg-slate-200 text-base-content lg:p-5 px-2 py-10 items-center justify-center font-primary-one mt-28 min-h-64">
+    <footer className="footer shadow-2xl shadow-black flex flex-col bg-yellow-400 text-base-content lg:p-5 px-2 py-10 items-center justify-center font-primary-one mt-28 min-h-64">
       <div className="grid lg:grid-cols-3 grid-cols-1 lg:gap-48 gap-10 lg:p-2 items-center justify-center">
         <nav className="flex flex-col mt-14 items-center justify-center text-center">
-          <h1 className="lg:text-2xl text-xl text-center font-bold font-name mb-5">
-            Bond Sports
-          </h1>
-          <div className="flex md:flex-col flex-col gap-1 items-left justify-center cursor-pointer">
+          <Link to={"/"} className="text-xl">
+            <img
+              className="w-[8rem] h-[7rem] bg-orange-600 rounded-e-full rounded-ss-full"
+              src="https://i.postimg.cc/bwDBLpjB/1-removebg-preview.png"
+              alt=""
+            />
+          </Link>
+          <div className="flex md:flex-col flex-col mt-5 font-bold gap-1 items-left justify-center cursor-pointer">
             <span>01797537300</span>
             <span>bondon21081@gmail.com</span>
           </div>
