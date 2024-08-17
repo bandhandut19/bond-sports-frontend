@@ -17,9 +17,9 @@ const ContactForm = () => {
   return (
     <div>
       <TopMarginSetter></TopMarginSetter>
-      <div className="grid grid-cols-2 gap-5 bg-yellow-400 py-6 px-3 rounded-md">
+      <div className="grid lg:grid-cols-2 lg:gap-5 gap-10 bg-yellow-400 lg:py-6 lg:px-3 py-10 px-5 rounded-md">
         <div className="bg-orange-400 bg-opacity-75 px-8 py-5 rounded-md">
-          <h1 className="text-3xl font-extrabold mb-10 text-white">
+          <h1 className="text-3xl lg:text-left text-center font-extrabold mb-10 text-white">
             Get In Touch
           </h1>
 
@@ -63,7 +63,7 @@ const ContactForm = () => {
           </form>
         </div>
         <div className="bg-orange-400 bg-opacity-75  px-8 py-5 rounded-md">
-          <h1 className="text-3xl text-right font-extrabold mb-10 text-white">
+          <h1 className="text-3xl lg:text-right text-center font-extrabold mb-10 text-white">
             Contact Information
           </h1>
           <div className="items-center justify-center flex gap-3 flex-col text-center">
