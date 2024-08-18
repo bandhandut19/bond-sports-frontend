@@ -192,7 +192,7 @@ const UpdateSingleProduct = () => {
                 id="description"
                 defaultValue={productDescription}
                 {...register("productDescription")}
-                className="col-span-3 px-2 py-1 rounded-md"
+                className="col-span-3 px-2 py-1 rounded-md bg-white"
                 // placeholder="Enter Product's Description here"
               />
             </div>

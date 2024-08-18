@@ -8,30 +8,30 @@ const Footer = () => {
           <h1 className="lg:text-2xl text-xl text-center font-bold font-name mb-5">
             Bond Sports
           </h1>
-          <div className="flex md:flex-col flex-col gap-1 items-left justify-center cursor-pointer">
-            <span>01797537300</span>
-            <span>bondon21081@gmail.com</span>
+          <div className="flex text-black md:flex-col flex-col gap-1 items-left justify-center cursor-pointer">
+            <span className="text-black">01797537300</span>
+            <span className="text-black">bondon21081@gmail.com</span>
           </div>
         </nav>
-        <nav className="flex flex-col mt-10 text-center lg:ml-10">
-          <h6 className="footer-title text-center font-extrabold">
+        <nav className="flex flex-col mt-10 text-center lg:ml-10 text-black">
+          <h6 className="footer-title text-center font-extrabold text-slate-700">
             Quick Navigation
           </h6>
-          <Link to={"/all-products"} className="link link-hover ">
+          <Link to={"/all-products"} className="link link-hover text-black">
             All Products
           </Link>
-          <Link to={"/manage-products"} className="link link-hover">
+          <Link to={"/manage-products"} className="link link-hover text-black">
             Manage Products
           </Link>
-          <Link to={"/about"} className="link link-hover">
+          <Link to={"/about"} className="link link-hover text-black">
             About Us
           </Link>
-          <Link to={"/"} className="link link-hover">
+          <Link to={"/"} className="link link-hover text-black">
             Contact Us
           </Link>
         </nav>
         <nav className="lg:ml-10 ml-5">
-          <h6 className="footer-title text-center">Social Links</h6>
+          <h6 className="footer-title text-center text-black">Social Links</h6>
           <div className="grid grid-flow-col gap-4  ml-2">
             {/* Linkedin */}
             <Link
@@ -55,9 +55,12 @@ const Footer = () => {
         </nav>
       </div>
       <h1>
-        <p>
-          &copy; <span id="year">2024</span> BonDeV(Bondon). All rights
-          reserved.
+        <p className="text-black">
+          &copy;{" "}
+          <span className="text-black" id="year">
+            2024
+          </span>{" "}
+          BonDeV(Bondon). All rights reserved.
         </p>
       </h1>
       {/* <div className="text-center">
