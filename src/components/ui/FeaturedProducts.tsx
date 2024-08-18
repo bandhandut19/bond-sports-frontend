@@ -21,7 +21,11 @@ const FeaturedProducts = () => {
             <ProductCard key={product.productName} product={product} />
           ))
       ) : (
-        <div>No Data</div>
+        <div>
+          <span className="text-3xl font-bold opacity-65 text-orange-400">
+            Products Will be added soon
+          </span>
+        </div>
       )}
     </div>
   );

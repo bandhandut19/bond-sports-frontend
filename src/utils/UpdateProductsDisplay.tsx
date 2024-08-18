@@ -20,6 +20,7 @@ import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { useState } from "react";
 import LoadingData from "@/components/ui/LoadingData";
+import NoDataFound from "@/components/ui/NoDataFound";
 
 const UpdateProductsDisplay = () => {
   const { data, isLoading } = useGetAllProductsQuery({
@@ -40,7 +41,9 @@ const UpdateProductsDisplay = () => {
   };
 
   const products: TProduct[] = data?.data;
-
+  if (!Array.isArray(products) || products.length === 0) {
+    return <NoDataFound></NoDataFound>;
+  }
   return (
     <div>
       {isLoading ? (
