@@ -7,12 +7,33 @@ import { Label } from "@radix-ui/react-label";
 import { Input } from "./input";
 import { useForm } from "react-hook-form";
 import { TContactForm } from "@/types/contact";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 
 const ContactForm = () => {
   const { register, handleSubmit } = useForm<TContactForm>();
   const handleContactForm = (data: TContactForm) => {
-    console.log(data);
-    //! here form filled data will be retrived.. in future will make the button functional to send as email.
+    const emailInfo = {
+      from_name: data.name,
+      from_email: data.email,
+      message: data.message,
+      to_name: "BonDeV | 2024 | Bond Sports",
+    };
+    console.log(import.meta.env.VITE_REACT_APP_PUBLIC_KEY);
+    emailjs;
+    emailjs
+      .send(
+        import.meta.env.VITE_REACT_APP_SERVICE_ID,
+        import.meta.env.VITE_REACT_APP_TEMPLATE_ID,
+        emailInfo,
+        import.meta.env.VITE_REACT_APP_PUBLIC_KEY
+      )
+      .then(() => {
+        toast("Message Sent Successfully");
+      })
+      .catch(() => {
+        toast("Message Sending Failed.");
+      });
   };
   return (
     <div>
