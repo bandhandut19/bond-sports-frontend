@@ -26,6 +26,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { AllCategories } from "@/types/ProductCategories";
 import { useForm } from "react-hook-form";
 import LoadingData from "@/components/ui/LoadingData";
+import NoDataFound from "@/components/ui/NoDataFound";
 
 const AllProducts = () => {
   const [categoryPosition, setCategoryPosition] = useState("Select category");
@@ -64,7 +65,7 @@ const AllProducts = () => {
   }
 
   if (!Array.isArray(productData) || productData.length === 0) {
-    return <div>No Data Found</div>;
+    return <NoDataFound></NoDataFound>;
   }
   const handleClearFilters = () => {
     // reset();
