@@ -42,11 +42,11 @@ const UpdateProductsDisplay = () => {
 
   const products: TProduct[] = data?.data;
 
-  if (!Array.isArray(products) || products.length === 0) {
-    return <NoDataFound></NoDataFound>;
-  }
   if (isLoading) {
     return <LoadingData></LoadingData>;
+  }
+  if (!Array.isArray(products) || products.length === 0) {
+    return <NoDataFound></NoDataFound>;
   }
 
   return (
