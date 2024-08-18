@@ -50,7 +50,7 @@ const UpdateProductsDisplay = () => {
   }
 
   return (
-    <div>
+    <div className="min-h-screen">
       <Table>
         <TableHeader>
           <TableRow className="bg-yellow-400 hover:bg-yellow-400">

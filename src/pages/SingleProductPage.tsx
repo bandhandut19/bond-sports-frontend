@@ -65,7 +65,7 @@ const SingleProductPage = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen">
       <div
         className="hero w-4/5 mx-auto rounded-lg rounded-b-none"
         style={{ backgroundImage: `url(${image})` }}

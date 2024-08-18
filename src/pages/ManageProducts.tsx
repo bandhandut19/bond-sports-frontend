@@ -8,7 +8,7 @@ import TopMarginSetter from "@/utils/TopMarginSetter";
 
 const ManageProducts = () => {
   return (
-    <>
+    <div className="min-h-screen">
       <div className="flex items-center justify-center">
         <div className="w-[40rem] ">
           <PageSlider sliderPhotos={manageProductsSlider}></PageSlider>
@@ -23,7 +23,7 @@ const ManageProducts = () => {
           <UpdateProductsButton></UpdateProductsButton>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
