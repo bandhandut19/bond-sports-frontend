@@ -1,13 +1,14 @@
 import { useGetAllProductsQuery } from "@/redux/features/product/productApi";
 import ProductCard from "./ProductCard";
 import { TProduct } from "@/types/ProductType";
+import LoadingData from "./LoadingData";
 
 const FeaturedProducts = () => {
   const { data, isLoading } = useGetAllProductsQuery({});
   const products = data?.data;
   // console.log(data.data);
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <LoadingData></LoadingData>;
   }
   return (
     //! It will feature last 4 newly added products

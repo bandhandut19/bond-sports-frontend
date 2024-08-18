@@ -19,6 +19,7 @@ import { GrUpdate } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { useState } from "react";
+import LoadingData from "@/components/ui/LoadingData";
 
 const UpdateProductsDisplay = () => {
   const { data, isLoading } = useGetAllProductsQuery({
@@ -43,7 +44,7 @@ const UpdateProductsDisplay = () => {
   return (
     <div>
       {isLoading ? (
-        <h1>Loading...</h1>
+        <LoadingData></LoadingData>
       ) : (
         <Table>
           <TableHeader>

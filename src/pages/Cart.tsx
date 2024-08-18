@@ -32,7 +32,7 @@ const Cart = () => {
   return (
     <div>
       {cartItems.length === 0 ? (
-        <div className="md:mb-96 lg:mt-20 text-center flex items-center justify-center">
+        <div className=" min-h-screen  text-center flex items-center justify-center">
           <h1 className="text-center text-2xl font-semibold">
             Your cart is empty now ! Kickstart by adding sports products now.
             Just{" "}

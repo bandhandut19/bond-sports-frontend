@@ -11,7 +11,7 @@ import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 
 const ContactForm = () => {
-  const { register, handleSubmit } = useForm<TContactForm>();
+  const { register, handleSubmit, reset } = useForm<TContactForm>();
   const handleContactForm = (data: TContactForm) => {
     const emailInfo = {
       from_name: data.name,
@@ -30,6 +30,7 @@ const ContactForm = () => {
       )
       .then(() => {
         toast("Message Sent Successfully");
+        reset();
       })
       .catch(() => {
         toast("Message Sending Failed.");

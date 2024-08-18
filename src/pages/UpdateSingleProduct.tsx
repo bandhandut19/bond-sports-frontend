@@ -26,6 +26,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import TopMarginSetter from "@/utils/TopMarginSetter";
 import { toast } from "sonner";
+import LoadingData from "@/components/ui/LoadingData";
 
 const UpdateSingleProduct = () => {
   const { id } = useParams();
@@ -35,7 +36,7 @@ const UpdateSingleProduct = () => {
   const [position, setPosition] = useState("Change Category");
   const { register, handleSubmit, reset, setValue } = useForm<TProduct>();
   if (isLoading) {
-    return <span className="text-xl">Loading...</span>;
+    return <LoadingData></LoadingData>;
   }
   const {
     image,

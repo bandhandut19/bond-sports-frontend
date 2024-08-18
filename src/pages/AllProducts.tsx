@@ -25,6 +25,7 @@ import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { AllCategories } from "@/types/ProductCategories";
 import { useForm } from "react-hook-form";
+import LoadingData from "@/components/ui/LoadingData";
 
 const AllProducts = () => {
   const [categoryPosition, setCategoryPosition] = useState("Select category");
@@ -60,6 +61,13 @@ const AllProducts = () => {
   });
   const productData = data?.data || [];
 
+  if (isLoading) {
+    return <LoadingData></LoadingData>;
+  }
+
+  if (!Array.isArray(productData) || productData.length === 0) {
+    return <div>No Data Found</div>;
+  }
   const handleClearFilters = () => {
     // reset();
     setCategoryPosition("Select category");
@@ -276,18 +284,12 @@ const AllProducts = () => {
         </div>
       </div>
 
-      {isLoading ? <span>Loading...</span> : ""}
-
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-10">
-        {Array.isArray(productData) && productData.length !== 0 ? (
-          productData.map((product: TProduct) => (
-            <div className="col-span-1" key={product.productName}>
-              <ProductCard product={product} />
-            </div>
-          ))
-        ) : (
-          <div>No Data Found</div>
-        )}
+        {productData.map((product: TProduct) => (
+          <div className="col-span-1" key={product.productName}>
+            <ProductCard product={product} />
+          </div>
+        ))}
       </div>
     </div>
   );
