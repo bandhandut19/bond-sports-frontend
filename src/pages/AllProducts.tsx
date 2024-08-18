@@ -59,7 +59,9 @@ const AllProducts = () => {
     ...filterQuery,
   });
   const productData = data?.data || [];
-
+  const uniqueBrands: string[] = Array.from(
+    new Set(productData.map((product: TProduct) => product.brand))
+  );
   if (isLoading) {
     return <LoadingData></LoadingData>;
   }
@@ -217,12 +219,9 @@ const AllProducts = () => {
                           setValue("brand", value);
                         }}
                       >
-                        {productData.map((product) => (
-                          <DropdownMenuRadioItem
-                            key={product.brand}
-                            value={product.brand}
-                          >
-                            {product.brand}
+                        {uniqueBrands.map((brand: string) => (
+                          <DropdownMenuRadioItem key={brand} value={brand}>
+                            {brand}
                           </DropdownMenuRadioItem>
                         ))}
                       </DropdownMenuRadioGroup>
