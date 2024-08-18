@@ -217,31 +217,11 @@ const AllProducts = () => {
                           setValue("brand", value);
                         }}
                       >
-                        {/* List of brands */}
-                        <DropdownMenuRadioItem value="SG">
-                          SG
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="Adidas">
-                          Adidas
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="Nike">
-                          Nike
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="Kookaburra">
-                          Kookaburra
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="Reebok">
-                          Reebok
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="Puma">
-                          Puma
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="Under Armour">
-                          Under Armour
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="Asics">
-                          Asics
-                        </DropdownMenuRadioItem>
+                        {productData.map((brand) => (
+                          <DropdownMenuRadioItem key={brand} value={brand}>
+                            {brand}
+                          </DropdownMenuRadioItem>
+                        ))}
                       </DropdownMenuRadioGroup>
                     </DropdownMenuContent>
                   </DropdownMenu>
