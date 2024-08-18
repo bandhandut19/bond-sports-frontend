@@ -217,9 +217,12 @@ const AllProducts = () => {
                           setValue("brand", value);
                         }}
                       >
-                        {productData.map((brand) => (
-                          <DropdownMenuRadioItem key={brand} value={brand}>
-                            {brand}
+                        {productData.map((product) => (
+                          <DropdownMenuRadioItem
+                            key={product.brand}
+                            value={product.brand}
+                          >
+                            {product.brand}
                           </DropdownMenuRadioItem>
                         ))}
                       </DropdownMenuRadioGroup>
