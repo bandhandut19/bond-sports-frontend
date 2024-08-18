@@ -15,6 +15,7 @@ const FeaturedProducts = () => {
       {Array.isArray(products) && products.length !== 0 ? (
         products
           .slice(Math.max(products.length - 4, 0), products.length)
+          .reverse()
           .map((product: TProduct) => (
             <ProductCard key={product.productName} product={product} />
           ))
