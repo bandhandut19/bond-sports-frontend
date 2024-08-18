@@ -41,9 +41,9 @@ const AddProducts = () => {
       category: data.category,
       stockQuantity: data.stockQuantity,
       brand: data.brand,
-      rating: 0,
       productDescription: data.productDescription,
       price: data.price,
+      rating: data.rating,
       image: data.image,
     };
     try {
@@ -162,6 +162,24 @@ const AddProducts = () => {
                 {...register("productDescription")}
                 className="col-span-3 px-2 py-1 rounded-md"
                 placeholder="Enter Product's Description here"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="rating" className="text-right">
+                Rating
+              </Label>
+              <Input
+                id="rating"
+                type="number"
+                {...register("rating", {
+                  min: { value: 0, message: "Minimum rating is 1" },
+                  max: { value: 5, message: "Maximum rating is 5" },
+                })}
+                className="col-span-3"
+                placeholder="Enter rating between 0 and 5"
+                min="0"
+                max="5"
+                step="1"
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
