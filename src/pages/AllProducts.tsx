@@ -52,8 +52,6 @@ const AllProducts = () => {
     maxPrice: maxPrice || "",
   };
 
-  console.log("Filter Query:", filterQuery);
-
   const { data, isLoading } = useGetAllProductsQuery({
     category,
     search: searchName,
@@ -284,7 +282,7 @@ const AllProducts = () => {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-2 grid-cols-1 gap-10">
+      <div className="grid lg:grid-cols-2 grid-cols-1 gap-10 min-h-screen">
         {productData.map((product: TProduct) => (
           <div className="col-span-1" key={product.productName}>
             <ProductCard product={product} />

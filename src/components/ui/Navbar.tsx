@@ -11,6 +11,7 @@ import {
 import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
 import { toast } from "sonner";
+
 const Navbar = () => {
   const items = useAppSelector((state: RootState) => state.cart.items);
   const navigate = useNavigate();
@@ -43,20 +44,56 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content text-white bg-orange-500 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu flex gap-2 items-right justify-center menu-sm dropdown-content text-white bg-yellow-400 rounded-box z-[1] mt-3 min-h-45 w-96 p-2 shadow"
           >
             <li>
-              <NavLink to={"/"}>Home</NavLink>
+              <NavLink
+                to={"/"}
+                className={({ isActive }) =>
+                  `nav-link hover:bg-orange-600 hover:text-white ${
+                    isActive ? "nav-link-active" : ""
+                  }`
+                }
+              >
+                <span className="text-2xl font-bold">Home</span>
+              </NavLink>
             </li>
             <li>
-              <NavLink to={"/all-products"}>All Products</NavLink>
+              <NavLink
+                to={"/all-products"}
+                className={({ isActive }) =>
+                  `nav-link hover:bg-orange-600 hover:text-white ${
+                    isActive ? "nav-link-active" : ""
+                  }`
+                }
+              >
+                <span className="text-2xl font-bold">All Products</span>
+              </NavLink>
             </li>
 
             <li>
-              <NavLink to={"/manage-products"}>Manage Products</NavLink>
+              <NavLink
+                to={"/manage-products"}
+                className={({ isActive }) =>
+                  `nav-link hover:bg-orange-600 hover:text-white ${
+                    isActive ? "nav-link-active" : ""
+                  }`
+                }
+              >
+                <span className="text-2xl font-bold">Manage Products</span>
+              </NavLink>
             </li>
             <li>
-              <NavLink to={"/about"}>About Us</NavLink>
+              <NavLink
+                to={"/about"}
+                className={({ isActive }) =>
+                  `nav-link hover:bg-orange-600 hover:text-white ${
+                    isActive ? "nav-link-active" : ""
+                  }`
+                }
+              >
+                <span className="text-2xl font-bold">About Us</span>
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -69,38 +106,59 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 gap-5 ">
-          <li className="text-lg font-semibold ">
-            <NavLink className="hover:bg-orange-600 hover:text-white" to={"/"}>
-              Home
-            </NavLink>
-          </li>
-          <li className="text-lg font-semibold ">
-            <NavLink
-              className="hover:bg-orange-600 hover:text-white"
-              to={"/all-products"}
-            >
-              All Products
-            </NavLink>
-          </li>
+        <nav>
+          <ul className="menu menu-horizontal px-1 gap-5 ">
+            <li className="text-lg font-semibold active:bg-red-700">
+              <NavLink
+                to={"/"}
+                className={({ isActive }) =>
+                  `nav-link hover:bg-orange-600 hover:text-white ${
+                    isActive ? "nav-link-active" : ""
+                  }`
+                }
+              >
+                Home
+              </NavLink>
+            </li>
+            <li className="text-lg font-semibold ">
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link hover:bg-orange-600 hover:text-white ${
+                    isActive ? "nav-link-active" : ""
+                  }`
+                }
+                to={"/all-products"}
+              >
+                All Products
+              </NavLink>
+            </li>
 
-          <li className="text-lg font-semibold">
-            <NavLink
-              className="hover:bg-orange-600 hover:text-white"
-              to={"/manage-products"}
-            >
-              Manage Products
-            </NavLink>
-          </li>
-          <li className="text-lg font-semibold">
-            <NavLink
-              className="hover:bg-orange-600 hover:text-white"
-              to={"/about"}
-            >
-              About Us
-            </NavLink>
-          </li>
-        </ul>
+            <li className="text-lg font-semibold">
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link hover:bg-orange-600 hover:text-white ${
+                    isActive ? "nav-link-active" : ""
+                  }`
+                }
+                to={"/manage-products"}
+              >
+                Manage Products
+              </NavLink>
+            </li>
+            <li className="text-lg font-semibold">
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link hover:bg-orange-600 hover:text-white ${
+                    isActive ? "nav-link-active" : ""
+                  }`
+                }
+                to={"/about"}
+              >
+                About Us
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
       </div>
       <div className="navbar-end">
         <div className="flex gap-x-10 py-2 px-3">
