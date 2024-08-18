@@ -11,6 +11,7 @@ import AboutLayout from "@/components/layouts/AboutLayout";
 import SuccessPage from "@/pages/SuccessPage";
 import UpdateProductsDisplay from "@/utils/UpdateProductsDisplay";
 import UpdateSingleProduct from "../pages/UpdateSingleProduct";
+import SuccessPageLayout from "@/components/layouts/SuccessPageLayout";
 
 const root = createBrowserRouter([
   {
@@ -45,10 +46,7 @@ const root = createBrowserRouter([
         path: `/product/:id`,
         element: <SingleProductPage></SingleProductPage>,
       },
-      {
-        path: "/success",
-        element: <SuccessPage></SuccessPage>,
-      },
+
       {
         path: "/updateproduct",
         element: <UpdateProductsDisplay></UpdateProductsDisplay>,
@@ -66,6 +64,16 @@ const root = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>,
+      },
+    ],
+  },
+  {
+    path: "/success",
+    element: <SuccessPageLayout></SuccessPageLayout>,
+    children: [
+      {
+        path: "/success",
+        element: <SuccessPage></SuccessPage>,
       },
     ],
   },

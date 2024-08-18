@@ -18,6 +18,8 @@ import { Button } from "@/components/ui/button";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
 import { addItems, increaseQuantity } from "@/redux/features/cart/cartSlice";
+import NoDataFound from "@/components/ui/NoDataFound";
+import LoadingData from "@/components/ui/LoadingData";
 
 //
 const SingleProductPage = () => {
@@ -27,10 +29,10 @@ const SingleProductPage = () => {
 
   const { data, isLoading } = useGetSingleProductQuery(id);
   if (isLoading) {
-    return <span className="text-xl">Loading...</span>;
+    return <LoadingData></LoadingData>;
   }
   if (!data) {
-    return <span className="text-xl">Product not found</span>;
+    return <NoDataFound></NoDataFound>;
   }
   const productInfo: TProduct = data?.data;
   const {
