@@ -95,6 +95,18 @@ const Navbar = () => {
                 <span className="text-2xl font-bold">About Us</span>
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to={"/contact"}
+                className={({ isActive }) =>
+                  `nav-link hover:bg-orange-600 hover:text-white ${
+                    isActive ? "nav-link-active" : ""
+                  }`
+                }
+              >
+                <span className="text-2xl font-bold">Contact Us</span>
+              </NavLink>
+            </li>
           </ul>
         </div>
         <Link to={"/"} className="text-xl">
@@ -155,6 +167,18 @@ const Navbar = () => {
                 to={"/about"}
               >
                 About Us
+              </NavLink>
+            </li>
+            <li className="text-lg font-semibold">
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link hover:bg-orange-600 hover:text-white ${
+                    isActive ? "nav-link-active" : ""
+                  }`
+                }
+                to={"/contact"}
+              >
+                Contact Us
               </NavLink>
             </li>
           </ul>
