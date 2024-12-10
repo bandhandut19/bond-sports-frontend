@@ -80,7 +80,7 @@ const Navbar = () => {
                   }`
                 }
               >
-                <span className="text-2xl font-bold">Manage Products</span>
+                <span className="text-2xl font-bold">Dashboard</span>
               </NavLink>
             </li>
             <li>
@@ -154,7 +154,7 @@ const Navbar = () => {
                 }
                 to={"/manage-products"}
               >
-                Manage Products
+                Dashboard
               </NavLink>
             </li>
             <li className="text-lg font-semibold">

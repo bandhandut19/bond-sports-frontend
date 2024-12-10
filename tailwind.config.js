@@ -2,10 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -34,6 +34,10 @@ module.exports = {
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
+        },
+        backgroundImage: {
+          "custom-image":
+            "url('https://i.postimg.cc/wj01tC4m/pexels-digitalbuggu-273786.jpg')",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -73,5 +77,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require('daisyui'),],
-}
+  plugins: [require("tailwindcss-animate"), require("daisyui")],
+};
