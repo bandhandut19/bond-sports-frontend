@@ -20,8 +20,32 @@ const Categories = () => {
           className="cursor-pointer"
           onClick={() => handleCategory(category)}
         >
-          <CardContent className="py-20 text-center bg-gradient-to-r from-yellow-500 to-orange-400 hover:bg-gradient-to-r hover:to-yellow-400 hover:from-orange-400 transition-all shadow-xl hover:shadow-lg shadow-orange-600 hover:shadow-orange-700 hover:text-white hover:border-4 hover:bg-orange-600 hover:border-l-0 hover:border-t-0 hover:border-b-0 hover:border-r-4 rounded-r-md border-slate-700">
-            <h1 className="font-bold text-3xl ">{category}</h1>
+          <CardContent className="pr-0 pl-0 text-center bg-gradient-to-r from-yellow-500 to-orange-400 hover:bg-gradient-to-r hover:to-yellow-400 hover:from-orange-400 transition-all shadow-xl hover:shadow-lg shadow-orange-600 hover:shadow-orange-700 hover:text-white hover:border-4 hover:bg-orange-600 hover:border-l-0 hover:border-t-0 hover:border-b-0 hover:border-r-4 rounded-r-md border-slate-700">
+            {category === "Cricket Kits" ? (
+              <img
+                className="rounded"
+                src="https://i.postimg.cc/y8Sm0Y9Z/alessandro-bogliari-o-Ds-Axe-R5g4-unsplash.jpg"
+              ></img>
+            ) : (
+              ""
+            )}
+            {category === "Football Kits" ? (
+              <img
+                className="rounded"
+                src="https://i.postimg.cc/c4PY1yj4/peter-glaser-q-Ws-Wa1-Jr-KM-unsplash.jpg"
+              ></img>
+            ) : (
+              ""
+            )}
+            {category === "Sports Shoe" ? (
+              <img
+                className="rounded"
+                src="https://i.postimg.cc/vmsV97bJ/andreas-bester-d-TCHepn-MQi-Q-unsplash.jpg"
+              ></img>
+            ) : (
+              ""
+            )}
+            <h1 className="font-bold text-3xl mt-2">{category}</h1>
           </CardContent>
         </Card>
       ))}
