@@ -99,7 +99,7 @@ const Navbar = () => {
         </div>
         <Link to={"/"} className="text-xl">
           <img
-            className="w-[8rem] h-[7rem] bg-orange-600 rounded-e-full rounded-ss-full"
+            className="w-[5rem] h-[4rem] bg-orange-600 rounded-e-full rounded-ss-full"
             src="https://i.postimg.cc/bwDBLpjB/1-removebg-preview.png"
             alt=""
           />
