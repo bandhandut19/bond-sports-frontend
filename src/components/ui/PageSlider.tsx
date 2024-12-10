@@ -16,22 +16,22 @@ const PageSlider = ({ sliderPhotos }: any) => {
   );
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center -mt-10">
       <Carousel
         plugins={[autoplay.current]}
-        className="lg:w-fit"
+        className="lg:w-full"
         onMouseEnter={() => autoplay.current.stop()}
         onMouseLeave={() => autoplay.current.play()}
       >
         <CarouselContent>
           {sliderPhotos.map((photo: string, index: number) => (
             <CarouselItem key={index}>
-              <div className="p-1">
+              <div className="">
                 {/* <Card> */}
                 <div className="flex items-center justify-center">
                   <span className="text-4xl font-semibold">
                     <img
-                      className="lg:w-4/5 w-full mx-auto"
+                      className="w-screen max-h-screen"
                       src={photo}
                       alt="Sports Photos"
                     />
