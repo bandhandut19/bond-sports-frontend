@@ -10,21 +10,21 @@ const Home = () => {
     <div>
       <PageSlider sliderPhotos={sliderPhotos}></PageSlider>
       <TopMarginSetter></TopMarginSetter>
-      <span className="lg:text-3xl text-4xl font-bold border-b-4 border-l-4 px-2 py-1 border-yellow-400 border-opacity-70 rounded-md">
+      <h1 className="lg:text-4xl text-4xl font-bold text-center  border-b-4 border-l-4 px-2 py-6 border-orange-600  bg-yellow-400 border-opacity-70 rounded-md">
         Featured Sports Products
-      </span>
+      </h1>
       <TopMarginSetter></TopMarginSetter>
       <FeaturedProducts></FeaturedProducts>
       <TopMarginSetter></TopMarginSetter>
-      <span className="lg:text-3xl text-4xl font-bold border-b-4 border-l-4 px-2 py-1 border-yellow-400 border-opacity-70 rounded-md">
+      <h1 className="lg:text-4xl text-4xl font-bold text-center  border-b-4 border-l-4 px-2 py-6 border-orange-600  bg-yellow-400 border-opacity-70 rounded-md">
         Categories
-      </span>
+      </h1>
       <TopMarginSetter></TopMarginSetter>
       <Categories></Categories>
       <TopMarginSetter></TopMarginSetter>
-      <span className="lg:text-3xl text-4xl font-bold border-b-4 border-l-4 px-2 py-1 border-yellow-400 border-opacity-70 rounded-md">
+      <h1 className="lg:text-4xl text-4xl font-bold text-center  border-b-4 border-l-4 px-2 py-6 border-orange-600  bg-yellow-400 border-opacity-70 rounded-md">
         Contact Us
-      </span>
+      </h1>
       <ContactForm></ContactForm>
       <TopMarginSetter></TopMarginSetter>
     </div>
