@@ -5,7 +5,7 @@ const Contact = () => {
   return (
     <div>
       <TopMarginSetter></TopMarginSetter>
-
+      <TopMarginSetter></TopMarginSetter>
       <ContactForm></ContactForm>
     </div>
   );
