@@ -87,7 +87,9 @@ const Blog = () => {
         {blogs.map((project, index) => (
           <div
             key={index}
-            className="card rounded-sm card-compact bg-orange-400 text-white  shadow-xl"
+            className="card 
+            hover:scale-105
+            rounded-sm card-compact bg-orange-400 text-white  shadow-xl"
           >
             <figure>
               <img src={project.image} alt="Project-Image" />
@@ -96,7 +98,7 @@ const Blog = () => {
               <h2 className="card-title">{project.name}</h2>
               <p>{project.description}</p>
               <div className="grid grid-cols-1 gap-5 text-center font-bold cursor-pointer">
-                <span className="bg-[#D6C0B3] text-black rounded-full py-2">
+                <span className="bg-yellow-400 text-black rounded-full py-2">
                   <Link to={project.github_url} target="_blank">
                     Read Full Article
                   </Link>
