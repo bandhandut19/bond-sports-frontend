@@ -13,6 +13,8 @@ import UpdateProductsDisplay from "@/utils/UpdateProductsDisplay";
 import UpdateSingleProduct from "../pages/UpdateSingleProduct";
 import SuccessPageLayout from "@/components/layouts/SuccessPageLayout";
 import Contact from "../pages/Contact";
+import PrivateRoute from "@/utils/PrivateRoute";
+import LoginPage from "@/pages/LoginPage";
 
 const root = createBrowserRouter([
   {
@@ -37,11 +39,19 @@ const root = createBrowserRouter([
       },
       {
         path: "/manage-products",
-        element: <ManageProducts></ManageProducts>,
+        element: (
+          <PrivateRoute>
+            <ManageProducts></ManageProducts>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/cart",
         element: <Cart></Cart>,
+      },
+      {
+        path: "/login",
+        element: <LoginPage></LoginPage>,
       },
       {
         path: "/checkout",
