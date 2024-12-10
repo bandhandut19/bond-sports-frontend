@@ -25,7 +25,7 @@ const LoginPage = () => {
 
       if (res.data.data.userAccessToken) {
         localStorage.setItem("userAccessToken", res.data.data.userAccessToken);
-        navigate("/adminpanel");
+        navigate("/manage-products");
         toast.success("Logged In Successfully");
       }
     } catch (err: any) {
