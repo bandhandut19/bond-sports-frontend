@@ -34,7 +34,7 @@ const LoginPage = () => {
     }
   };
   return (
-    <div className="hero bg-yellow-400 min-h-screen">
+    <div className="hero bg-yellow-400 min-h-screen -mb-28">
       <div className=" w-4/5 bg-orange-500 shrink-0 shadow-2xl">
         <form className=" py-20 px-10" onSubmit={handleSubmit(handleLogin)}>
           <div className="form-control">
