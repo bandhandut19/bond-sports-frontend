@@ -32,7 +32,7 @@ const FeaturedProducts = () => {
                 />
               </div>
 
-              <CardFooter className="flex gap-5 mt-10 items-center justify-center">
+              <CardFooter className="flex gap-5 mt-5 items-center justify-center">
                 <span className="bg-white px-2 py-1 lg:py-0 rounded-md font-bold">
                   {product.category}
                 </span>
@@ -40,7 +40,7 @@ const FeaturedProducts = () => {
                   {product.price} Tk only
                 </span>
               </CardFooter>
-              <div className="font-bold px-1 mb-5">{product.productName}</div>
+              <div className="font-bold px-1 mb-2">{product.productName}</div>
             </Card>
           ))
       ) : (
