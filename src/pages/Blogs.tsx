@@ -83,7 +83,7 @@ const blogs = [
 const Blog = () => {
   return (
     <div className="min-h-screen pb-20">
-      <div className="grid lg:grid-cols-3 gap-10 px-5">
+      <div className="grid lg:grid-cols-3 grid-cols-2 gap-10 px-5">
         {blogs.map((project, index) => (
           <div
             key={index}
