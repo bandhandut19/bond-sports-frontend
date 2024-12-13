@@ -83,13 +83,13 @@ const blogs = [
 const Blog = () => {
   return (
     <div className="min-h-screen pb-20">
-      <div className="grid lg:grid-cols-3 gap-5 px-5">
+      <div className="grid lg:grid-cols-3 gap-10 px-5">
         {blogs.map((project, index) => (
           <div
             key={index}
             className="card 
             hover:scale-105
-            rounded-sm card-compact bg-orange-400 text-white  shadow-xl"
+            rounded-sm card-compact bg-orange-400 text-white  shadow-md pr-0 pl-0 text-center bg-gradient-to-r from-yellow-500 to-orange-400 hover:bg-gradient-to-r hover:to-yellow-400 hover:from-orange-400 transition-all hover:shadow-lg shadow-orange-600 hover:shadow-orange-700 hover:text-white  hover:bg-orange-600 hover:border-l-0"
           >
             <figure>
               <img src={project.image} alt="Project-Image" />

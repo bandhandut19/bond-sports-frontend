@@ -12,7 +12,7 @@ const FeaturedProducts = () => {
   }
   return (
     //! It will feature last 4 newly added products
-    <div className="grid lg:grid-cols-2 grid-cols-1 gap-5">
+    <div className="grid lg:grid-cols-2 grid-cols-1 gap-10">
       {Array.isArray(products) && products.length !== 0 ? (
         products
           .slice(Math.max(products.length - 4, 0), products.length)
