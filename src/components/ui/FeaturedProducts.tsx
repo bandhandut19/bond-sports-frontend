@@ -40,7 +40,7 @@ const FeaturedProducts = () => {
                   {product.price} Tk only
                 </span>
               </CardFooter>
-              <div className="font-bold px-1">{product.productName}</div>
+              <div className="font-bold px-1 mb-5">{product.productName}</div>
             </Card>
           ))
       ) : (
