@@ -21,6 +21,7 @@ import { toast } from "sonner";
 import { useState } from "react";
 import LoadingData from "@/components/ui/LoadingData";
 import NoDataFound from "@/components/ui/NoDataFound";
+import TopMarginSetter from "./TopMarginSetter";
 
 const UpdateProductsDisplay = () => {
   const { data, isLoading } = useGetAllProductsQuery({
@@ -50,7 +51,8 @@ const UpdateProductsDisplay = () => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-11/12 mx-auto">
+      <TopMarginSetter></TopMarginSetter>
       <h1 className="mb-8 text-center cursor-pointer text-2xl w-9/12 mx-auto font-bold border-4 px-4 py-1 rounded-full bg-orange-600 border-l-0 border-t-0 border-slate-500 text-white border-e-6 ">
         Update Products
       </h1>

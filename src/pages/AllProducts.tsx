@@ -27,6 +27,7 @@ import { AllCategories } from "@/types/ProductCategories";
 import { useForm } from "react-hook-form";
 import LoadingData from "@/components/ui/LoadingData";
 import NoDataFound from "@/components/ui/NoDataFound";
+import TopMarginSetter from "@/utils/TopMarginSetter";
 
 const AllProducts = () => {
   const [categoryPosition, setCategoryPosition] = useState("Select category");
@@ -89,7 +90,8 @@ const AllProducts = () => {
   };
 
   return (
-    <div>
+    <div className="w-11/12 mx-auto">
+      <TopMarginSetter></TopMarginSetter>
       <div className="mb-10 flex justify-between">
         {/* Search */}
         <div>

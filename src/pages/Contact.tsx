@@ -3,7 +3,7 @@ import TopMarginSetter from "@/utils/TopMarginSetter";
 
 const Contact = () => {
   return (
-    <div>
+    <div className="w-11/12 mx-auto">
       <TopMarginSetter></TopMarginSetter>
       <TopMarginSetter></TopMarginSetter>
       <ContactForm></ContactForm>
