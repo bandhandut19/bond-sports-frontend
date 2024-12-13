@@ -17,10 +17,10 @@ const Categories = () => {
       {AllCategories.map((category) => (
         <Card
           key={category}
-          className="cursor-pointer"
+          className="cursor-pointer hover:scale-105"
           onClick={() => handleCategory(category)}
         >
-          <CardContent className="pr-0 pl-0 text-center bg-gradient-to-r from-yellow-500 to-orange-400 hover:bg-gradient-to-r hover:to-yellow-400 hover:from-orange-400 transition-all shadow-xl hover:shadow-lg shadow-orange-600 hover:shadow-orange-700 hover:text-white hover:border-4 hover:bg-orange-600 hover:border-l-0 hover:border-t-0 hover:border-b-0 hover:border-r-4 rounded-r-md border-slate-700">
+          <CardContent className="pr-0 pl-0 text-center bg-gradient-to-r from-yellow-500 to-orange-400 hover:bg-gradient-to-r hover:to-yellow-400 hover:from-orange-400 transition-all shadow-md hover:shadow-lg shadow-orange-600 hover:shadow-orange-700 hover:text-white  hover:bg-orange-600 hover:border-l-0 ">
             {category === "Cricket Kits" ? (
               <img
                 className="rounded"
