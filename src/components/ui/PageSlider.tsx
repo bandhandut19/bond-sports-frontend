@@ -15,7 +15,7 @@ const PageSlider = ({ sliderPhotos }: any) => {
   );
 
   return (
-    <div className="relative w-screen overflow-x-hidden">
+    <div className="relative w-screen overflow-x-hidden ml-2 lg:ml-0">
       <Carousel
         plugins={[autoplay.current]}
         onMouseEnter={() => autoplay.current.stop()}
