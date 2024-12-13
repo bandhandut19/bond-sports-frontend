@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
-// import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -16,34 +15,26 @@ const PageSlider = ({ sliderPhotos }: any) => {
   );
 
   return (
-    <div className="flex items-center justify-center -mt-10">
+    <div className="relative w-screen overflow-x-hidden">
       <Carousel
         plugins={[autoplay.current]}
-        className="lg:w-full"
         onMouseEnter={() => autoplay.current.stop()}
         onMouseLeave={() => autoplay.current.play()}
+        className="w-full h-full"
       >
-        <CarouselContent>
+        <CarouselContent className="w-full h-4/6">
           {sliderPhotos.map((photo: string, index: number) => (
-            <CarouselItem key={index}>
-              <div className="">
-                {/* <Card> */}
-                <div className="flex items-center justify-center">
-                  <span className="text-4xl font-semibold">
-                    <img
-                      className="w-screen max-h-screen"
-                      src={photo}
-                      alt="Sports Photos"
-                    />
-                  </span>
-                </div>
-                {/* </Card> */}
-              </div>
+            <CarouselItem key={index} className="w-full h-full">
+              <img
+                className="w-full h-full object-cover"
+                src={photo}
+                alt="Sports Photos"
+              />
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="bg-yellow-400 lg:-mx-3 mx-3" />
-        <CarouselNext className="bg-yellow-400 lg:-mx-3 mx-3" />
+        <CarouselPrevious className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-yellow-400 p-2 rounded-full" />
+        <CarouselNext className="absolute right-8 top-1/2 transform -translate-y-1/2 bg-yellow-400 p-2 rounded-full" />
       </Carousel>
     </div>
   );
