@@ -65,12 +65,12 @@ const AddProducts = () => {
       <DialogTrigger asChild>
         <Button
           onClick={() => setIsOpen(true)}
-          className="hover:border-none text-xl  px-5 hover:bg-gradient-to-br  bg-gradient-to-tl to-yellow-400 w-4/5 from-orange-400 h-[10rem]"
+          className=" text-xl  px-5 bg-orange-500"
         >
           Add Products
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[700px] bg-yellow-400">
+      <DialogContent className="sm:max-w-[700px]">
         <DialogHeader className="flex items-center justify-center">
           <DialogTitle className="text-2xl font-bold">Add Product</DialogTitle>
           <DialogDescription className="text-slate-700">

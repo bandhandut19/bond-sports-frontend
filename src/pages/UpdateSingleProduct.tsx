@@ -3,7 +3,7 @@ import {
   useGetSingleProductQuery,
   useUpdateProductMutation,
 } from "@/redux/features/product/productApi";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -30,6 +30,7 @@ import LoadingData from "@/components/ui/LoadingData";
 
 const UpdateSingleProduct = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { data, isLoading } = useGetSingleProductQuery(id);
   const [updateProduct] = useUpdateProductMutation();
   const productInfo: TProduct = data?.data;
@@ -69,6 +70,12 @@ const UpdateSingleProduct = () => {
         <h1 className="mb-8 text-center cursor-pointer text-2xl w-9/12 mx-auto font-bold border-4 px-4 py-1 rounded-full bg-orange-600 border-l-0 border-t-0 border-slate-500 text-white border-e-6 ">
           Update : <span className="text-yellow-200">{productName}</span>
         </h1>
+        <button
+          onClick={() => navigate("/dashboard/updateproduct")}
+          className="bg-orange-500 px-5 py-1 font-bold text-white"
+        >
+          ⬅️ Back
+        </button>
         <div className="flex lg:gap-5 lg:flex-row flex-col justify-center items-center mt-5">
           <div className="mb-5 lg:-mt-28">
             <img

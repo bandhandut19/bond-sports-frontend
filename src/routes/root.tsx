@@ -54,15 +54,6 @@ const root = createBrowserRouter([
         path: `/product/:id`,
         element: <SingleProductPage></SingleProductPage>,
       },
-
-      {
-        path: "/updateproduct",
-        element: <UpdateProductsDisplay></UpdateProductsDisplay>,
-      },
-      {
-        path: "/updateproduct/:id",
-        element: <UpdateSingleProduct></UpdateSingleProduct>,
-      },
     ],
   },
   {
@@ -96,6 +87,18 @@ const root = createBrowserRouter([
             <ManageProducts></ManageProducts>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/dashboard/updateproduct",
+        element: (
+          <PrivateRoute>
+            <UpdateProductsDisplay></UpdateProductsDisplay>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/updateproduct/:id",
+        element: <UpdateSingleProduct></UpdateSingleProduct>,
       },
     ],
   },

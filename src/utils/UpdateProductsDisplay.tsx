@@ -16,18 +16,19 @@ import {
 } from "@/components/ui/table";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { GrUpdate } from "react-icons/gr";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useState } from "react";
 import LoadingData from "@/components/ui/LoadingData";
 import NoDataFound from "@/components/ui/NoDataFound";
-import TopMarginSetter from "./TopMarginSetter";
+// import TopMarginSetter from "./TopMarginSetter";
 
 const UpdateProductsDisplay = () => {
   const { data, isLoading } = useGetAllProductsQuery({
     queryName: "product",
     userQuery: "",
   });
+  const navigate = useNavigate();
   const [deleteProduct] = useDeleteProductMutation();
 
   const [selectedProduct, setSelectedProduct] = useState<TProduct | null>(null);
@@ -51,11 +52,17 @@ const UpdateProductsDisplay = () => {
   }
 
   return (
-    <div className="min-h-screen w-11/12 mx-auto">
-      <TopMarginSetter></TopMarginSetter>
+    <div className="min-h-screen w-11/12 mx-auto mt-5 mb-5">
+      {/* <TopMarginSetter></TopMarginSetter> */}
       <h1 className="mb-8 text-center cursor-pointer text-2xl w-9/12 mx-auto font-bold border-4 px-4 py-1 rounded-full bg-orange-600 border-l-0 border-t-0 border-slate-500 text-white border-e-6 ">
         Update Products
       </h1>
+      <button
+        onClick={() => navigate("/dashboard")}
+        className="bg-orange-500 px-5 py-1 font-bold text-white"
+      >
+        ⬅️ Back
+      </button>
       <Table>
         <TableHeader>
           <TableRow className="bg-yellow-400 hover:bg-yellow-400">
@@ -95,7 +102,7 @@ const UpdateProductsDisplay = () => {
                 {item.stockQuantity} left only
               </TableCell>
               <TableCell className="text-center font-semibold">
-                <Link to={`/updateproduct/${item._id}`}>
+                <Link to={`/dashboard/updateproduct/${item._id}`}>
                   <button className="px-2 border-2 border-green-700 hover:border-yellow-400 bg-green-500 py-2 hover:text-xl rounded-b-full font-bold text-2xl text-white">
                     <GrUpdate />
                   </button>
