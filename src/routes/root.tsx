@@ -15,6 +15,7 @@ import SuccessPageLayout from "@/components/layouts/SuccessPageLayout";
 import Contact from "../pages/Contact";
 import PrivateRoute from "@/utils/PrivateRoute";
 import LoginPage from "@/pages/LoginPage";
+import DashboardLayout from "@/components/layouts/DashboardLayout";
 
 const root = createBrowserRouter([
   {
@@ -36,14 +37,6 @@ const root = createBrowserRouter([
       {
         path: "/all-products",
         element: <AllProducts></AllProducts>,
-      },
-      {
-        path: "/dashboard",
-        element: (
-          <PrivateRoute>
-            <ManageProducts></ManageProducts>
-          </PrivateRoute>
-        ),
       },
       {
         path: "/cart",
@@ -89,6 +82,20 @@ const root = createBrowserRouter([
       {
         path: "/success",
         element: <SuccessPage></SuccessPage>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <ManageProducts></ManageProducts>
+          </PrivateRoute>
+        ),
       },
     ],
   },
