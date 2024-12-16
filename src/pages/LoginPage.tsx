@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { loginToken } from "@/redux/features/auth/authSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +13,7 @@ interface FormValues {
 const LoginPage = () => {
   const { register, handleSubmit } = useForm<FormValues>();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const handleLogin = async (data: FormValues) => {
     console.log(data);
 
@@ -23,14 +26,16 @@ const LoginPage = () => {
           withCredentials: true,
         }
       );
-
-      if (res.data.data.userAccessToken) {
-        localStorage.setItem("userAccessToken", res.data.data.userAccessToken);
+      const token = res?.data?.data?.userAccessToken;
+      if (token) {
+        localStorage.setItem("userAccessToken", token);
+        dispatch(loginToken({ token }));
         navigate("/dashboard");
         toast.success("Logged In Successfully");
       }
     } catch (err: any) {
       console.log(err);
+      toast.error("Login failed. Please try again.");
     }
   };
   return (

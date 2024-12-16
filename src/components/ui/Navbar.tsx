@@ -15,6 +15,8 @@ import { toast } from "sonner";
 const Navbar = () => {
   const items = useAppSelector((state: RootState) => state.cart.items);
   const navigate = useNavigate();
+  const token = useAppSelector((state: RootState) => state.auth.token);
+  const handleLogout = () => {};
   const handleCheckout = () => {
     if (items.length === 0) {
       toast.warning("No products to checkout");
@@ -71,18 +73,18 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            {/* <li>
+            <li className={token ? "block" : "hidden"}>
               <NavLink
-                to={"/manage-products"}
+                to={"/dashboard"}
                 className={({ isActive }) =>
                   `nav-link hover:bg-orange-600 hover:text-white ${
                     isActive ? "nav-link-active" : ""
                   }`
                 }
               >
-                <span className="text-2xl font-bold">Dashboard</span>
+                <span className="text-2xl font-bold ">Dashboard</span>
               </NavLink>
-            </li> */}
+            </li>
             <li>
               <NavLink
                 to={"/about"}
@@ -144,19 +146,19 @@ const Navbar = () => {
                 All Products
               </NavLink>
             </li>
-            {/* 
-            <li className="text-lg font-semibold">
+
+            <li className={token ? "block text-lg font-semibold " : "hidden"}>
               <NavLink
                 className={({ isActive }) =>
                   `nav-link hover:bg-orange-600 hover:text-white ${
                     isActive ? "nav-link-active" : ""
                   }`
                 }
-                to={"/manage-products"}
+                to={"/dashboard"}
               >
                 Dashboard
               </NavLink>
-            </li> */}
+            </li>
             <li className="text-lg font-semibold">
               <NavLink
                 className={({ isActive }) =>
@@ -186,14 +188,23 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <div className="text-center flex items-center justify-center">
-          <button
-            onClick={() => {
-              navigate("/login");
-            }}
-            className="btn rounded-md px-6 py-6 text-center bg-orange-600 border-none text-white hover:bg-orange-500"
-          >
-            <h1 className="text-center -mt-2 ">Login</h1>
-          </button>
+          {token ? (
+            <button
+              onClick={handleLogout}
+              className="btn rounded-md px-6 py-6 text-center bg-orange-600 border-none text-white hover:bg-orange-500"
+            >
+              <h1 className="text-center -mt-2 ">Logout</h1>
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                navigate("/login");
+              }}
+              className="btn rounded-md px-6 py-6 text-center bg-orange-600 border-none text-white hover:bg-orange-500"
+            >
+              <h1 className="text-center -mt-2 ">Login</h1>
+            </button>
+          )}
         </div>
         <div className="flex gap-x-10 py-2 px-3">
           <div className="text-2xl font-semibold text-orange-600 border-4 border-orange-600 p-2 border-t-0 border-r-0 border-opacity-40 rounded-lg">
