@@ -38,7 +38,7 @@ const root = createBrowserRouter([
         element: <AllProducts></AllProducts>,
       },
       {
-        path: "/manage-products",
+        path: "/dashboard",
         element: (
           <PrivateRoute>
             <ManageProducts></ManageProducts>

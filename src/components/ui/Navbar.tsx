@@ -71,7 +71,7 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            <li>
+            {/* <li>
               <NavLink
                 to={"/manage-products"}
                 className={({ isActive }) =>
@@ -82,7 +82,7 @@ const Navbar = () => {
               >
                 <span className="text-2xl font-bold">Dashboard</span>
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink
                 to={"/about"}
@@ -144,7 +144,7 @@ const Navbar = () => {
                 All Products
               </NavLink>
             </li>
-
+            {/* 
             <li className="text-lg font-semibold">
               <NavLink
                 className={({ isActive }) =>
@@ -156,7 +156,7 @@ const Navbar = () => {
               >
                 Dashboard
               </NavLink>
-            </li>
+            </li> */}
             <li className="text-lg font-semibold">
               <NavLink
                 className={({ isActive }) =>
@@ -185,6 +185,16 @@ const Navbar = () => {
         </nav>
       </div>
       <div className="navbar-end">
+        <div className="text-center flex items-center justify-center">
+          <button
+            onClick={() => {
+              navigate("/login");
+            }}
+            className="btn rounded-md px-6 py-6 text-center bg-orange-600 border-none text-white hover:bg-orange-500"
+          >
+            <h1 className="text-center -mt-2 ">Login</h1>
+          </button>
+        </div>
         <div className="flex gap-x-10 py-2 px-3">
           <div className="text-2xl font-semibold text-orange-600 border-4 border-orange-600 p-2 border-t-0 border-r-0 border-opacity-40 rounded-lg">
             <NavLink to={"/cart"} className="flex-1 ">
