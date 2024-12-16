@@ -1,12 +1,14 @@
 // import PageSlider from "@/components/ui/PageSlider";
 import UpdateProductsButton from "@/components/ui/UpdateProductsButton";
 import AddProducts from "@/utils/AddProducts";
+import { useNavigate } from "react-router-dom";
 // import { manageProductsSlider } from "@/utils/manageProductsSlider";
 // import TopMarginSetter from "@/utils/TopMarginSetter";
 
 //! NEED TO ADD SPECIFIC PHOTOS FOR MANAGE PRODUCTS
 
 const ManageProducts = () => {
+  const navigate = useNavigate();
   return (
     <div
       className=" relative min-h-screen bg-opacity-25 bg-cover"
@@ -32,25 +34,33 @@ const ManageProducts = () => {
       <div className="absolute inset-0 bg-black bg-opacity-50">
         <div className="flex overflow-hidden">
           <div className="bg-yellow-400 min-h-screen px-10">
-            <ul className="flex flex-col gap-5 mt-10">
-              <li>
-                <h1 className="bg-orange-500 px-5 text-center font-bold hover:text-white py-5 cursor-pointer">
+            <div className="flex flex-col gap-5 mt-10">
+              <div>
+                <h1 className="bg-orange-500 px-5 text-center text-xl font-bold text-white py-5 cursor-pointer">
                   Welcome Page
                 </h1>
-              </li>
-              <li>
+              </div>
+              <div>
                 <h1 className="bg-orange-500 px-5 text-center font-bold hover:text-white py-5 cursor-pointer">
                   <AddProducts></AddProducts>
                 </h1>
-              </li>
-              <li>
+              </div>
+              <div>
                 <h1 className="bg-orange-500 px-5 font-bold text-center hover:text-white py-5 cursor-pointer">
                   <UpdateProductsButton></UpdateProductsButton>
                 </h1>
-              </li>
-            </ul>
+              </div>
+              <div>
+                <button
+                  onClick={() => navigate("/")}
+                  className="bg-orange-500 px-10 font-bold text-center hover:text-white py-5 cursor-pointer"
+                >
+                  ⬅️ Go to Home
+                </button>
+              </div>
+            </div>
           </div>
-          <div>
+          <div className="text-center">
             <div className="bg-orange-500 bg-opacity-40 min-h-screen w-screen">
               <h1 className="text-center -ml-72 pt-10 font-bold text-5xl text-white">
                 Welcome To Bond Sports Admin Panel

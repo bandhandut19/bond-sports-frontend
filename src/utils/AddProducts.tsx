@@ -70,7 +70,7 @@ const AddProducts = () => {
           Add Products
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[700px]">
+      <DialogContent className="sm:max-w-[700px] bg-yellow-500">
         <DialogHeader className="flex items-center justify-center">
           <DialogTitle className="text-2xl font-bold">Add Product</DialogTitle>
           <DialogDescription className="text-slate-700">
