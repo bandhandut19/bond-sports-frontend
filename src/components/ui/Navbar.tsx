@@ -8,15 +8,22 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useAppSelector } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
 import { toast } from "sonner";
+import { logout } from "../../redux/features/auth/authSlice";
 
 const Navbar = () => {
   const items = useAppSelector((state: RootState) => state.cart.items);
   const navigate = useNavigate();
   const token = useAppSelector((state: RootState) => state.auth.token);
-  const handleLogout = () => {};
+  const dispatch = useAppDispatch();
+  const handleLogout = () => {
+    localStorage.removeItem("userAccessToken");
+    dispatch(logout());
+    navigate("/");
+    toast("You are logged out");
+  };
   const handleCheckout = () => {
     if (items.length === 0) {
       toast.warning("No products to checkout");
