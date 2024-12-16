@@ -38,6 +38,7 @@
     "react-router-dom": "^6.24.1",
     "react-star-ratings": "^2.3.0",
     "react-toastify": "^10.0.6",
+    "redux-persist": "^6.0.0",
     "shadcn-ui": "^0.8.0",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.4.0",
